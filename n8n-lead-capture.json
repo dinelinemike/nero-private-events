@@ -1,0 +1,185 @@
+{
+  "name": "Nero DC — Private Events Lead Capture",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nero-private-events-lead",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "https://privateevents.nerowashdc.com",
+          "rawBody": false
+        }
+      },
+      "id": "webhook-in",
+      "name": "Form Submit",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-360, 300],
+      "webhookId": "nero-private-events-lead"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "honeypot",
+              "leftValue": "={{ $json.body.company_url || '' }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "spam-gate",
+      "name": "Not A Bot",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [-140, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "a1", "name": "submitted_at", "value": "={{ $json.body.submitted_at || $now.toISO() }}", "type": "string" },
+            { "id": "a2", "name": "first_name", "value": "={{ $json.body.first_name }}", "type": "string" },
+            { "id": "a3", "name": "last_name", "value": "={{ $json.body.last_name }}", "type": "string" },
+            { "id": "a4", "name": "email", "value": "={{ $json.body.email }}", "type": "string" },
+            { "id": "a5", "name": "phone", "value": "={{ $json.body.phone }}", "type": "string" },
+            { "id": "a6", "name": "event_date", "value": "={{ $json.body.event_date }}", "type": "string" },
+            { "id": "a7", "name": "guest_count", "value": "={{ $json.body.guest_count }}", "type": "string" },
+            { "id": "a8", "name": "event_type", "value": "={{ $json.body.event_type }}", "type": "string" },
+            { "id": "a9", "name": "audience", "value": "={{ $json.body.audience }}", "type": "string" },
+            { "id": "a10", "name": "company", "value": "={{ $json.body.company || '' }}", "type": "string" },
+            { "id": "a11", "name": "alt_date", "value": "={{ $json.body.alt_date || '' }}", "type": "string" },
+            { "id": "a12", "name": "start_time", "value": "={{ $json.body.start_time || '' }}", "type": "string" },
+            { "id": "a13", "name": "end_time", "value": "={{ $json.body.end_time || '' }}", "type": "string" },
+            { "id": "a14", "name": "space", "value": "={{ $json.body.space || 'Not sure — wants a recommendation' }}", "type": "string" },
+            { "id": "a15", "name": "food_style", "value": "={{ $json.body.food_style || '' }}", "type": "string" },
+            { "id": "a16", "name": "food_package", "value": "={{ $json.body.food_package || '' }}", "type": "string" },
+            { "id": "a17", "name": "salad", "value": "={{ $json.body.salad || '' }}", "type": "string" },
+            { "id": "a18", "name": "dessert", "value": "={{ $json.body.dessert || '' }}", "type": "string" },
+            { "id": "a19", "name": "dietary", "value": "={{ $json.body.dietary || '' }}", "type": "string" },
+            { "id": "a20", "name": "bev_style", "value": "={{ $json.body.bev_style || '' }}", "type": "string" },
+            { "id": "a21", "name": "bev_package", "value": "={{ $json.body.bev_package || '' }}", "type": "string" },
+            { "id": "a22", "name": "bev_hours", "value": "={{ $json.body.bev_hours || '' }}", "type": "string" },
+            { "id": "a23", "name": "toast", "value": "={{ $json.body.toast || '' }}", "type": "string" },
+            { "id": "a24", "name": "setup", "value": "={{ $json.body.setup || '' }}", "type": "string" },
+            { "id": "a25", "name": "setup_notes", "value": "={{ $json.body.setup_notes || '' }}", "type": "string" },
+            { "id": "a26", "name": "budget", "value": "={{ $json.body.budget || '' }}", "type": "string" },
+            { "id": "a27", "name": "priorities", "value": "={{ $json.body.priorities || '' }}", "type": "string" },
+            { "id": "a28", "name": "notes", "value": "={{ $json.body.notes || '' }}", "type": "string" },
+            { "id": "a29", "name": "estimate_shown", "value": "={{ $json.body.estimate_shown || '' }}", "type": "string" },
+            { "id": "a30", "name": "utm_source", "value": "={{ $json.body.utm_source || '' }}", "type": "string" },
+            { "id": "a31", "name": "utm_medium", "value": "={{ $json.body.utm_medium || '' }}", "type": "string" },
+            { "id": "a32", "name": "utm_campaign", "value": "={{ $json.body.utm_campaign || '' }}", "type": "string" },
+            { "id": "a33", "name": "utm_term", "value": "={{ $json.body.utm_term || '' }}", "type": "string" },
+            { "id": "a34", "name": "utm_content", "value": "={{ $json.body.utm_content || '' }}", "type": "string" },
+            { "id": "a35", "name": "gclid", "value": "={{ $json.body.gclid || '' }}", "type": "string" },
+            { "id": "a36", "name": "fbclid", "value": "={{ $json.body.fbclid || '' }}", "type": "string" },
+            { "id": "a37", "name": "referrer", "value": "={{ $json.body.referrer || '' }}", "type": "string" },
+            { "id": "a38", "name": "page", "value": "={{ $json.body.page || '' }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "normalize",
+      "name": "Flatten Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [80, 200]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "value": "REPLACE_WITH_SPREADSHEET_ID", "mode": "id" },
+        "sheetName": { "__rl": true, "value": "Leads", "mode": "name" },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "id": "sheet-append",
+      "name": "Append To Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [300, 200]
+    },
+    {
+      "parameters": {
+        "fromEmail": "noreply@dineline.co",
+        "toEmail": "events@nerowashdc.com",
+        "subject": "=Private event inquiry — {{ $json.first_name }} {{ $json.last_name }}{{ $json.guest_count ? ', ' + $json.guest_count + ' guests' : '' }}{{ $json.event_date ? ', ' + $json.event_date : '' }}",
+        "emailFormat": "text",
+        "text": "=Name: {{ $json.first_name }} {{ $json.last_name }}\nEmail: {{ $json.email }}\nPhone: {{ $json.phone }}\nCompany: {{ $json.company }}\n\nDate: {{ $json.event_date }}\nAlternate date: {{ $json.alt_date }}\nTime: {{ $json.start_time }} – {{ $json.end_time }}\nGuests: {{ $json.guest_count }}\nType: {{ $json.event_type }}\nCorporate or social: {{ $json.audience }}\nPreferred space: {{ $json.space }}\n\nFood: {{ $json.food_style }}\nPackage: {{ $json.food_package }}\nSalad: {{ $json.salad }}   Dessert: {{ $json.dessert }}\nDietary: {{ $json.dietary }}\n\nBeverage: {{ $json.bev_style }}\nBar package: {{ $json.bev_package }} {{ $json.bev_hours }}\nSparkling toast: {{ $json.toast }}\n\nSetup: {{ $json.setup }}\nSetup notes: {{ $json.setup_notes }}\n\nBudget: {{ $json.budget }}\nPriorities: {{ $json.priorities }}\nNotes: {{ $json.notes }}\n\nEstimate they saw on the site: {{ $json.estimate_shown }}\n\nSource: {{ $json.utm_source || $json.referrer }}\nCampaign: {{ $json.utm_campaign }}\n\n— Sent automatically from privateevents.nerowashdc.com",
+        "options": { "replyTo": "={{ $json.email }}" }
+      },
+      "id": "email-out",
+      "name": "Email The Events Team",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [520, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              { "name": "Access-Control-Allow-Origin", "value": "https://privateevents.nerowashdc.com" }
+            ]
+          }
+        }
+      },
+      "id": "respond-ok",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [740, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              { "name": "Access-Control-Allow-Origin", "value": "https://privateevents.nerowashdc.com" }
+            ]
+          }
+        }
+      },
+      "id": "respond-bot",
+      "name": "Respond OK (Bot)",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [80, 420]
+    }
+  ],
+  "connections": {
+    "Form Submit": { "main": [[{ "node": "Not A Bot", "type": "main", "index": 0 }]] },
+    "Not A Bot": {
+      "main": [
+        [{ "node": "Flatten Fields", "type": "main", "index": 0 }],
+        [{ "node": "Respond OK (Bot)", "type": "main", "index": 0 }]
+      ]
+    },
+    "Flatten Fields": { "main": [[{ "node": "Append To Sheet", "type": "main", "index": 0 }]] },
+    "Append To Sheet": { "main": [[{ "node": "Email The Events Team", "type": "main", "index": 0 }]] },
+    "Email The Events Team": { "main": [[{ "node": "Respond OK", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {},
+  "meta": {
+    "instanceId": "nero-private-events",
+    "description": "Alternative to the Apps Script backend. Import, set Google Sheets + SMTP credentials, replace REPLACE_WITH_SPREADSHEET_ID, activate, then paste the production webhook URL into index.html as ENDPOINT. Add a Slack node after 'Email The Events Team' if you want channel alerts."
+  },
+  "tags": []
+}

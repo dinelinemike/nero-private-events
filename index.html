@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Private Events &amp; Buyouts · Nero · Dupont Circle, Washington DC</title>
-<meta name="description" content="Three floors, a speakeasy, a wine room and a patio for up to 180 guests in Dupont Circle. All-in pricing and a proposal within two hours. 1207 19th St NW, Washington DC." />
+<title>Private Events &amp; Corporate Buyouts · Nero · Dupont Circle, Washington DC</title>
+<meta name="description" content="Corporate events, private dinners and full buyouts in Dupont Circle. Family-style banquet menus from $40 per person, published bar packages, and a reply within the hour. 1207 19th St NW, Washington DC." />
 <link rel="canonical" href="https://privateevents.nerowashdc.com/" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Private Events &amp; Buyouts · Nero · Dupont Circle DC" />
-<meta property="og:description" content="Up to 180 guests across three levels plus a patio. All-in pricing. A proposal within two hours." />
+<meta property="og:title" content="Private Events &amp; Corporate Buyouts · Nero · Dupont Circle DC" />
+<meta property="og:description" content="Menus from $40 per person. Three spaces or the whole building, up to 180 guests. A reply within the hour." />
 <meta property="og:url" content="https://privateevents.nerowashdc.com/" />
-<meta property="og:image" content="https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/391170I5A8199-Enhanced-NR.jpg?w=1200&fit=crop&auto=compress,format&cs=origin" />
+<meta property="og:image" content="https://privateevents.nerowashdc.com/img/og-share.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 
 <!-- ═══════════════════════════════════════════════════════════════
      TRACKING
-     Pixel ID below is Nero's, carried over from the World Cup page.
+     Pixel ID is Nero's, carried over from the World Cup page.
      GA4 + Google Ads IDs are PLACEHOLDERS — see README "Placeholders".
      ═══════════════════════════════════════════════════════════════ -->
 <script>
@@ -42,35 +42,22 @@
 </script>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     ATTRIBUTION + TRIPLESEAT SUCCESS HOOK
-     Both must be defined BEFORE the embed script runs, which is why
-     they live in <head> rather than at the bottom of the page.
+     ATTRIBUTION CAPTURE
+     Runs in <head> so the UTMs are banked before anything else can
+     strip them — an anchor click, a back/forward, a slow script.
      ═══════════════════════════════════════════════════════════════ -->
 <script>
 (function () {
   'use strict';
-
-  /* Capture attribution on landing and keep it for the session. */
   var ATTR_KEYS = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'];
   var params = new URLSearchParams(window.location.search);
   var attr = {};
   try { attr = JSON.parse(sessionStorage.getItem('nero_attr') || '{}'); } catch (e) { attr = {}; }
   ATTR_KEYS.forEach(function (k) { if (params.get(k)) attr[k] = params.get(k); });
   if (!attr.referrer) attr.referrer = document.referrer || 'direct';
+  if (!attr.first_seen) attr.first_seen = new Date().toISOString();
   try { sessionStorage.setItem('nero_attr', JSON.stringify(attr)); } catch (e) {}
   window.NERO_ATTR = attr;
-
-  /* Success hook: send the booker to a real thank-you page.
-     A page load is what makes the Meta and Google conversions honest.
-     A click on Submit is not a submitted lead. This is.             */
-  window.TS = window.TS || {};
-  window.TS.custom_success_callback = function () {
-    var qs = new URLSearchParams(attr).toString();
-    window.location = '/thank-you' + (qs ? '?' + qs : '');
-  };
-  window.TS.custom_error_callback = function () {
-    if (window.fbq) fbq('trackCustom', 'LeadFormError');
-  };
 })();
 </script>
 
@@ -88,204 +75,296 @@
 }
 
 html{scroll-behavior:smooth;scroll-padding-top:130px}
+@media(max-width:720px){html{scroll-padding-top:180px}}
 body{background:var(--black);color:var(--white);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
 
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
-section{padding:96px 0;position:relative}
-@media(max-width:720px){section{padding:64px 0}}
+section{padding:92px 0;position:relative}
+@media(max-width:720px){section{padding:60px 0}}
 
 .eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px}
-h2{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.15;font-weight:400;letter-spacing:-.01em}
-h3{font-family:var(--font-display);font-size:1.35rem;font-weight:400;letter-spacing:-.01em}
-.lede{color:var(--muted-hi);font-size:1.05rem;max-width:62ch;margin-top:18px}
-.rule{height:1px;background:linear-gradient(to right,var(--border-gold),transparent);margin:0}
+h2{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15;font-weight:400;letter-spacing:-.01em}
+h3{font-family:var(--font-display);font-size:1.3rem;font-weight:400;letter-spacing:-.01em}
+.lede{color:var(--muted-hi);font-size:1.03rem;max-width:64ch;margin-top:18px}
+.rule{height:1px;background:linear-gradient(to right,var(--border-gold),transparent)}
 
-/* ── placeholder review mode: add class="review" to <body> to highlight every value awaiting client input ── */
-.ph{}
+/* placeholder review mode: <body class="review"> highlights unconfirmed values */
 body.review .ph{background:rgba(201,168,76,.18);outline:1px dashed var(--gold);border-radius:2px}
 
-/* ── TOP BAR (strip + nav stacked, so a wrapping strip never covers the nav) ── */
+/* ── TOP BAR ── */
 .topbar{position:fixed;top:0;left:0;right:0;z-index:200}
 .strip{background:var(--gold);color:var(--black);text-align:center;font-size:.74rem;font-weight:700;
   letter-spacing:.09em;text-transform:uppercase;padding:7px 16px;line-height:1.35}
 @media(max-width:720px){.strip{font-size:.63rem;letter-spacing:.06em;padding:6px 12px}}
-
-/* ── NAV ── */
-nav{display:flex;align-items:center;justify-content:space-between;
-  gap:24px;padding:14px 32px;background:rgba(10,10,10,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 32px;
+  background:rgba(10,10,10,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .nav-logo img{height:46px;width:auto;filter:brightness(0) invert(1);opacity:.92}
-.nav-links{display:flex;gap:30px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-hi)}
+.nav-links{display:flex;gap:26px;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-hi)}
 .nav-links a{text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
+@media(max-width:980px){.nav-links{display:none}}
+@media(max-width:720px){nav{padding:11px 16px}.nav-logo img{height:34px}}
+
 .btn{display:inline-block;background:var(--gold);color:var(--black);padding:12px 24px;border-radius:3px;text-decoration:none;
   font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--gold);
-  transition:background .2s,color .2s;cursor:pointer}
+  transition:background .2s,color .2s;cursor:pointer;font-family:var(--font-body)}
 .btn:hover{background:var(--gold-light);border-color:var(--gold-light)}
 .btn-ghost{background:transparent;color:var(--gold)}
 .btn-ghost:hover{background:var(--gold-dim);color:var(--gold-light)}
-@media(max-width:900px){.nav-links{display:none}}
-@media(max-width:720px){nav{justify-content:space-between;padding:11px 16px}.nav-logo img{height:34px}.btn{padding:9px 16px;font-size:.7rem}}
+@media(max-width:720px){.btn{padding:10px 16px;font-size:.7rem}}
 
 /* ── HERO ── */
-.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  padding:170px 24px 84px;position:relative;overflow:hidden}
+.hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:170px 24px 80px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;
   background:radial-gradient(ellipse 110% 70% at 50% 30%,rgba(201,168,76,.16) 0%,transparent 58%),
              linear-gradient(to bottom,transparent 55%,var(--black) 100%),
-             url('https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/391170I5A8199-Enhanced-NR.jpg?w=1800&fit=crop&auto=compress,format&cs=origin') center/cover;
+             url('img/hero.jpg') center/cover;
   opacity:.55}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.78),rgba(10,10,10,.55) 40%,var(--black))}
 .hero > *{position:relative;z-index:2}
-.hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.4rem,6.2vw,4.4rem);line-height:1.06;letter-spacing:-.02em;max-width:16ch}
+.hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.3rem,6vw,4.2rem);line-height:1.07;letter-spacing:-.02em;max-width:17ch}
 .hero h1 em{font-style:italic;color:var(--gold-light)}
-.hero p{color:var(--muted-hi);font-size:clamp(1rem,1.6vw,1.15rem);max-width:60ch;margin:26px auto 0}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:38px}
+.hero p{color:var(--muted-hi);font-size:clamp(1rem,1.6vw,1.13rem);max-width:62ch;margin:26px auto 0}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:36px}
+.hero-types{margin-top:30px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);max-width:60ch}
 
-.stats{display:flex;gap:0;flex-wrap:wrap;justify-content:center;margin-top:64px;border-top:1px solid var(--border-gold);padding-top:34px}
-.stat{padding:0 38px;text-align:center;border-right:1px solid var(--border)}
+.stats{display:flex;justify-content:center;margin-top:56px;border-top:1px solid var(--border-gold);padding-top:32px}
+.stat{padding:0 36px;text-align:center;border-right:1px solid var(--border)}
 .stat:last-child{border-right:none}
-.stat b{display:block;font-family:var(--font-display);font-size:2.1rem;color:var(--gold);line-height:1;font-weight:400}
-.stat span{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:9px}
+.stat b{display:block;font-family:var(--font-display);font-size:2rem;color:var(--gold);line-height:1;font-weight:400}
+.stat span{display:block;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:9px}
 @media(max-width:720px){
-  .stats{display:grid;grid-template-columns:1fr 1fr;gap:26px 0;width:100%;max-width:380px;margin-left:auto;margin-right:auto}
-  .stat{padding:0 10px}
-  .stat:nth-child(even){border-right:none}
-  .stat b{font-size:1.7rem}
-  .stat span{font-size:.6rem;letter-spacing:.1em}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:24px 0;width:100%;max-width:380px;margin-left:auto;margin-right:auto}
+  .stat{padding:0 10px}.stat:nth-child(even){border-right:none}
+  .stat b{font-size:1.6rem}.stat span{font-size:.58rem;letter-spacing:.09em}
 }
 
-/* ── THE NUMBER ── */
-.number{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.number-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
-@media(max-width:860px){.number-grid{grid-template-columns:1fr;gap:36px}}
-.number-box{background:var(--card);border:1px solid var(--border-gold);border-radius:5px;padding:34px 32px}
-.number-row{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--border);font-size:.95rem}
-.number-row:last-of-type{border-bottom:none}
-.number-row span:first-child{color:var(--muted-hi)}
-.number-row span:last-child{font-family:var(--font-display);font-size:1.1rem}
-.number-total{margin-top:16px;padding-top:20px;border-top:1px solid var(--border-gold);display:flex;justify-content:space-between;align-items:baseline}
-.number-total span:first-child{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-.number-total span:last-child{font-family:var(--font-display);font-size:2.3rem;color:var(--gold-light)}
-.fineprint{font-size:.8rem;color:var(--muted);margin-top:16px;line-height:1.6}
-
 /* ── SPACES ── */
-.spaces-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
+.spaces-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:48px}
 @media(max-width:740px){.spaces-grid{grid-template-columns:1fr}}
 .space{background:var(--card);border:1px solid var(--border);border-radius:5px;overflow:hidden;
   display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
 .space:hover{border-color:var(--border-gold);transform:translateY(-3px)}
-.space-img{height:240px;background-size:cover;background-position:center;filter:saturate(.85)}
-@media(max-width:740px){.space-img{height:190px}}
+.space.feature{border-color:var(--border-gold);background:var(--card-hi)}
+.space-img{height:230px;background-size:cover;background-position:center;filter:saturate(.85)}
+@media(max-width:740px){.space-img{height:180px}}
 .space-body{padding:28px;flex:1;display:flex;flex-direction:column}
-.space h3{margin-bottom:6px}
-.space .cap{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.space-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.space .cap{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.space .best{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
 .space p{font-size:.92rem;color:var(--muted-hi);flex:1}
 .space ul{list-style:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted)}
 .space ul li{padding:3px 0 3px 16px;position:relative}
 .space ul li::before{content:'—';position:absolute;left:0;color:var(--gold);opacity:.6}
-.space.feature{border-color:var(--border-gold);background:var(--card-hi)}
 
-/* ── PACKAGES ── */
-.pk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;margin-top:52px}
-.pk{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:32px 28px;display:flex;flex-direction:column;position:relative}
-.pk.loved{border-color:var(--gold);background:var(--card-hi)}
-.pk-tag{position:absolute;top:-11px;left:28px;background:var(--gold);color:var(--black);font-size:.63rem;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;padding:4px 12px;border-radius:2px}
-.pk h3{margin-bottom:4px}
-.pk .price{font-family:var(--font-display);font-size:2.5rem;color:var(--gold-light);line-height:1;margin:16px 0 4px}
-.pk .price small{font-size:.85rem;color:var(--muted);font-family:var(--font-body);letter-spacing:.04em}
-.pk .min{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
-.pk ul{list-style:none;font-size:.9rem;color:var(--muted-hi);flex:1;border-top:1px solid var(--border);padding-top:20px}
-.pk ul li{padding:6px 0 6px 22px;position:relative}
-.pk ul li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:.7rem;top:9px}
-.pk .btn{margin-top:26px;text-align:center}
+/* ── MENUS ── */
+.menus{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+@media(max-width:1000px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.menu-grid{grid-template-columns:1fr}}
+.menu{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:28px 24px;display:flex;flex-direction:column;position:relative}
+.menu.loved{border-color:var(--gold);background:var(--card-hi)}
+.menu-tag{position:absolute;top:-11px;left:24px;background:var(--gold);color:var(--black);font-size:.6rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;padding:4px 11px;border-radius:2px}
+.menu h3{font-size:1.22rem;margin-bottom:2px}
+.menu .price{font-family:var(--font-display);font-size:2.2rem;color:var(--gold-light);line-height:1;margin:14px 0 2px}
+.menu .price small{font-size:.8rem;color:var(--muted);font-family:var(--font-body);letter-spacing:.04em}
+.menu .who{font-size:.8rem;color:var(--muted);margin-bottom:18px;min-height:4.6em}
+@media(max-width:560px){.menu .who{min-height:0}}
+.menu .counts{list-style:none;border-top:1px solid var(--border);padding-top:16px;font-size:.86rem;color:var(--muted-hi);flex:1}
+.menu .counts li{display:flex;justify-content:space-between;padding:5px 0;gap:10px}
+.menu .counts li span:first-child{color:var(--muted)}
+.menu .dessert{font-size:.76rem;color:var(--muted);margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.menu .dessert b{color:var(--gold-light);font-weight:400}
+.menu .btn{margin-top:20px;text-align:center;font-size:.72rem;padding:11px 14px}
 
-/* ── BILL OF RIGHTS ── */
-.bor{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.bor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;margin-top:52px;background:var(--border)}
-.bor-item{background:var(--dark);padding:32px 28px}
-.bor-item .n{font-family:var(--font-display);font-size:2.4rem;color:var(--gold);opacity:.35;line-height:1}
-.bor-item h3{font-size:1.15rem;margin:12px 0 10px}
-.bor-item p{font-size:.9rem;color:var(--muted-hi)}
+.menu-note{margin-top:28px;padding:22px 26px;background:var(--card);border:1px solid var(--border);border-radius:5px;
+  font-size:.92rem;color:var(--muted-hi);display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px 34px}
+.menu-note div b{display:block;color:var(--gold);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+
+/* ── BAR ── */
+.bar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+@media(max-width:900px){.bar-grid{grid-template-columns:1fr}}
+.bev{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:30px 26px;display:flex;flex-direction:column}
+.bev h3{margin-bottom:4px}
+.bev .kind{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.bev ul{list-style:none;font-size:.89rem;color:var(--muted-hi);flex:1}
+.bev ul li{padding:5px 0 5px 20px;position:relative}
+.bev ul li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:.66rem;top:9px}
+.bev .hours{display:flex;gap:0;margin-top:22px;border-top:1px solid var(--border);padding-top:18px}
+.bev .hours div{flex:1;text-align:center;border-right:1px solid var(--border)}
+.bev .hours div:last-child{border-right:none}
+.bev .hours b{display:block;font-family:var(--font-display);font-size:1.6rem;color:var(--gold-light);line-height:1;font-weight:400}
+.bev .hours span{display:block;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:7px}
+
+.bar-alt{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;margin-top:22px;background:var(--border);border:1px solid var(--border);border-radius:5px;overflow:hidden}
+.bar-alt div{background:var(--card);padding:24px 26px}
+.bar-alt b{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
+.bar-alt p{font-size:.89rem;color:var(--muted-hi)}
+
+/* ── ESTIMATOR ── */
+.est{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.est-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;margin-top:44px}
+@media(max-width:900px){.est-grid{grid-template-columns:1fr;gap:30px}}
+.est-controls{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:30px 28px}
+.est-field{margin-bottom:22px}
+.est-field:last-child{margin-bottom:0}
+.est-field > label{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-hi);margin-bottom:10px;font-weight:600}
+.est-field select,.est-field input[type=number]{width:100%;background:#101010;border:1px solid var(--border);border-radius:3px;
+  color:var(--white);padding:12px 13px;font-size:.95rem;font-family:var(--font-body);appearance:none;-webkit-appearance:none}
+.est-field select{background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);
+  background-position:calc(100% - 19px) 19px,calc(100% - 14px) 19px;background-size:5px 5px;background-repeat:no-repeat}
+.est-field select:focus,.est-field input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-dim)}
+.seg{display:flex;gap:8px}
+.seg button{flex:1;background:#101010;border:1px solid var(--border);color:var(--muted-hi);padding:11px 8px;border-radius:3px;
+  font-size:.82rem;cursor:pointer;font-family:var(--font-body);transition:all .18s}
+.seg button:hover{border-color:var(--border-gold)}
+.seg button[aria-pressed=true]{background:var(--gold-dim);border-color:var(--gold);color:var(--gold-light)}
+.est-field > label.chk{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--muted-hi);
+  cursor:pointer;text-transform:none;letter-spacing:0;font-weight:400;margin-bottom:0}
+.chk input{width:17px;height:17px;flex:none;accent-color:var(--gold);cursor:pointer}
+
+.est-out{background:var(--card-hi);border:1px solid var(--border-gold);border-radius:6px;padding:32px 30px;position:sticky;top:130px}
+@media(max-width:900px){.est-out{position:static}}
+.est-line{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--border);font-size:.93rem;gap:14px}
+.est-line span:first-child{color:var(--muted-hi)}
+.est-line span:last-child{font-family:var(--font-display);font-size:1.05rem;white-space:nowrap}
+.est-line.sub span:last-child{color:var(--white)}
+.est-line.fee span:first-child{color:var(--muted);font-size:.87rem}
+.est-line.fee span:last-child{font-size:.95rem;color:var(--muted-hi)}
+.est-total{margin-top:16px;padding-top:20px;border-top:1px solid var(--border-gold);display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.est-total span:first-child{font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;color:var(--gold)}
+.est-total span:last-child{font-family:var(--font-display);font-size:2.4rem;color:var(--gold-light);line-height:1;white-space:nowrap}
+.est-pp{text-align:right;font-size:.85rem;color:var(--muted);margin-top:8px}
+.est-cta{margin-top:24px;width:100%;text-align:center}
+.est-fine{font-size:.78rem;color:var(--muted);margin-top:16px;line-height:1.6}
+
+/* ── HOW PRICING WORKS ── */
+.hpw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;margin-top:44px;background:var(--border);border:1px solid var(--border);border-radius:5px;overflow:hidden}
+.hpw-grid div{background:var(--card);padding:26px 24px}
+.hpw-grid b{display:block;font-family:var(--font-display);font-size:1.1rem;color:var(--white);font-weight:400;margin-bottom:8px}
+.hpw-grid p{font-size:.88rem;color:var(--muted-hi)}
+
+/* ── FEATURES ── */
+.feat{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;margin-top:44px;background:var(--border)}
+.feat-item{background:var(--dark);padding:28px 26px}
+.feat-item b{display:block;font-family:var(--font-display);font-size:1.08rem;color:var(--gold-light);font-weight:400;margin-bottom:8px}
+.feat-item p{font-size:.88rem;color:var(--muted-hi)}
+
+/* ── PROMISE ── */
+.bor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;margin-top:44px;background:var(--border);border:1px solid var(--border);border-radius:5px;overflow:hidden}
+.bor-item{background:var(--card);padding:30px 26px}
+.bor-item .n{font-family:var(--font-display);font-size:2.2rem;color:var(--gold);opacity:.35;line-height:1}
+.bor-item h3{font-size:1.1rem;margin:11px 0 9px}
+.bor-item p{font-size:.88rem;color:var(--muted-hi)}
+
+/* ── PROCESS ── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px}
+@media(max-width:860px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+.step{border-top:2px solid var(--gold);padding-top:18px}
+.step b{display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.step h3{font-size:1.05rem;margin-bottom:7px}
+.step p{font-size:.87rem;color:var(--muted-hi)}
 
 /* ── GALLERY ── */
-.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:12px;margin-top:52px}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:12px;margin-top:44px}
 .gal figure{overflow:hidden;border-radius:4px;position:relative;background:var(--card)}
 .gal figure:nth-child(1){grid-column:span 2;grid-row:span 2}
 .gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;filter:saturate(.9)}
 .gal figure:hover img{transform:scale(1.05)}
-.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;font-size:.78rem;letter-spacing:.06em;
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;font-size:.77rem;letter-spacing:.05em;
   background:linear-gradient(to top,rgba(10,10,10,.9),transparent);color:var(--white)}
-@media(max-width:860px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}}
+@media(max-width:860px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:145px}}
 
 /* ── QUOTE ── */
 .quote{text-align:center;max-width:76ch;margin:0 auto}
-.quote blockquote{font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,1.85rem);line-height:1.45;font-style:italic;color:var(--white)}
-.quote cite{display:block;margin-top:22px;font-style:normal;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.quote blockquote{font-family:var(--font-display);font-size:clamp(1.25rem,2.5vw,1.8rem);line-height:1.45;font-style:italic}
+.quote cite{display:block;margin-top:20px;font-style:normal;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 
 /* ── FORM ── */
 .form-sec{background:var(--dark);border-top:1px solid var(--border)}
-.form-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
-@media(max-width:940px){.form-grid{grid-template-columns:1fr;gap:36px}}
-.form-side ul{list-style:none;margin-top:26px}
-.form-side li{padding:11px 0 11px 26px;position:relative;font-size:.94rem;color:var(--muted-hi);border-bottom:1px solid var(--border)}
+.form-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:52px;align-items:start}
+@media(max-width:940px){.form-grid{grid-template-columns:1fr;gap:34px}}
+.form-side ul{list-style:none;margin-top:24px}
+.form-side li{padding:11px 0 11px 26px;position:relative;font-size:.93rem;color:var(--muted-hi);border-bottom:1px solid var(--border)}
 .form-side li::before{content:'✓';position:absolute;left:0;color:var(--gold)}
-.form-side .direct{margin-top:30px;padding:22px;background:var(--card);border:1px solid var(--border);border-radius:5px}
+.form-side .direct{margin-top:28px;padding:22px;background:var(--card);border:1px solid var(--border);border-radius:5px}
 .form-side .direct b{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
 .form-side .direct a{color:var(--white);text-decoration:none;border-bottom:1px solid var(--border-gold)}
 
-.form-shell{background:var(--card);border:1px solid var(--border-gold);border-radius:6px;padding:36px 32px;min-height:420px}
-@media(max-width:520px){.form-shell{padding:26px 18px}}
+.form-shell{background:var(--card);border:1px solid var(--border-gold);border-radius:6px;padding:34px 30px;min-height:400px}
+@media(max-width:520px){.form-shell{padding:24px 18px}}
 .form-shell > h3{margin-bottom:6px}
-.form-shell > .sub{font-size:.88rem;color:var(--muted);margin-bottom:26px}
-#ts-loading{color:var(--muted);font-size:.9rem;padding:40px 0;text-align:center}
-#ts-fallback{display:none;padding:26px 0}
-#ts-fallback p{color:var(--muted-hi);font-size:.94rem;margin-bottom:16px}
-
-/* ── TripleSeat embed restyle ──────────────────────────────────
-   The embed loads with inline_form=true (div-based, not tables).
-   These rules use #ts-form-mount for specificity over their CSS.  */
-#ts-form-mount{color:var(--white)}
-#ts-form-mount table{width:100%;border-collapse:collapse}
-#ts-form-mount label,
-#ts-form-mount .label,
-#ts-form-mount td.label{display:block;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--muted-hi);margin-bottom:7px;font-weight:600;font-family:var(--font-body)}
-#ts-form-mount input[type=text],
-#ts-form-mount input[type=email],
-#ts-form-mount input[type=tel],
-#ts-form-mount input[type=number],
-#ts-form-mount input[type=date],
-#ts-form-mount select,
-#ts-form-mount textarea{
+.form-shell > .sub{font-size:.87rem;color:var(--muted);margin-bottom:22px}
+#est-carry{display:none;margin-bottom:20px;padding:14px 16px;background:var(--gold-dim);border:1px solid var(--border-gold);
+  border-radius:4px;font-size:.85rem;color:var(--gold-light);line-height:1.5}
+/* ── INQUIRY FORM ── */
+#lead-form fieldset{border:none;margin:0 0 6px}
+#lead-form legend{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;padding:0;margin-bottom:16px}
+.fld{margin-bottom:16px}
+.fld label{display:block;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted-hi);
+  margin-bottom:7px;font-weight:600}
+.fld label .req{color:var(--gold)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:480px){.row2{grid-template-columns:1fr}}
+#lead-form input[type=text],#lead-form input[type=email],#lead-form input[type=tel],
+#lead-form input[type=number],#lead-form input[type=date],#lead-form input[type=time],
+#lead-form select,#lead-form textarea{
   width:100%;background:#101010;border:1px solid var(--border);border-radius:3px;color:var(--white);
-  padding:12px 13px;font-size:.95rem;font-family:var(--font-body);margin-bottom:18px;
+  padding:12px 13px;font-size:.95rem;font-family:var(--font-body);
   appearance:none;-webkit-appearance:none;transition:border-color .2s,box-shadow .2s}
-#ts-form-mount select{background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);
+#lead-form select{background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);
   background-position:calc(100% - 19px) 19px,calc(100% - 14px) 19px;background-size:5px 5px;background-repeat:no-repeat}
-#ts-form-mount input:focus,#ts-form-mount select:focus,#ts-form-mount textarea:focus{
+#lead-form input:focus,#lead-form select:focus,#lead-form textarea:focus{
   outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-dim)}
-#ts-form-mount textarea{min-height:104px;resize:vertical}
-#ts-form-mount input[type=submit],
-#ts-form-mount button[type=submit],
-#ts-form-mount .button{
-  background:var(--gold);color:var(--black);border:none;border-radius:3px;padding:15px 30px;
-  font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
-  width:100%;font-family:var(--font-body);transition:background .2s}
-#ts-form-mount input[type=submit]:hover,#ts-form-mount button[type=submit]:hover{background:var(--gold-light)}
-#ts-form-mount .error,#ts-form-mount .errors,#ts-form-mount .field_with_errors{color:#e07b6a}
-#ts-form-mount a{color:var(--gold)}
-#ts-form-mount .required{color:var(--gold)}
+#lead-form textarea{min-height:96px;resize:vertical}
+#lead-form input[type=date],#lead-form input[type=time]{color-scheme:dark}
+#lead-form input.invalid,#lead-form select.invalid{border-color:#e07b6a}
+.fld .err{display:none;color:#e07b6a;font-size:.78rem;margin-top:6px}
+.fld.bad .err{display:block}
+
+.segrow{display:flex;gap:8px;flex-wrap:wrap}
+.segrow label{flex:1;min-width:120px;margin:0;text-transform:none;letter-spacing:0;font-size:.88rem;font-weight:400}
+.segrow label input{position:absolute;opacity:0;pointer-events:none}
+.segrow label span{display:block;text-align:center;background:#101010;border:1px solid var(--border);
+  border-radius:3px;padding:11px 8px;color:var(--muted-hi);cursor:pointer;transition:all .18s}
+.segrow label input:checked + span{background:var(--gold-dim);border-color:var(--gold);color:var(--gold-light)}
+.segrow label input:focus-visible + span{box-shadow:0 0 0 3px var(--gold-dim)}
+
+.chkgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+@media(max-width:520px){.chkgrid{grid-template-columns:1fr}}
+.chkline{display:flex;align-items:center;gap:9px;font-size:.88rem;color:var(--muted-hi);cursor:pointer}
+.chkline input{width:16px;height:16px;flex:none;accent-color:var(--gold);cursor:pointer}
+
+.more-toggle{width:100%;background:transparent;border:1px dashed var(--border-gold);color:var(--gold);
+  border-radius:3px;padding:13px;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  cursor:pointer;font-family:var(--font-body);margin:8px 0 18px;transition:background .2s}
+.more-toggle:hover{background:var(--gold-dim)}
+#more-fields{display:none}
+#more-fields.open{display:block}
+.more-hint{font-size:.82rem;color:var(--muted);margin:-6px 0 18px;line-height:1.55}
+
+#form-submit{width:100%;padding:16px;font-size:.82rem;margin-top:6px}
+#form-submit[disabled]{opacity:.6;cursor:wait}
+#form-status{display:none;margin-top:16px;padding:14px 16px;border-radius:4px;font-size:.88rem;line-height:1.55}
+#form-status.err{display:block;background:rgba(224,123,106,.1);border:1px solid rgba(224,123,106,.4);color:#e8a294}
+#form-status.err a{color:var(--gold)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-legal{font-size:.76rem;color:var(--muted);margin-top:14px;line-height:1.55}
 
 /* ── FOOTER ── */
-footer{background:var(--black);border-top:1px solid var(--border);padding:64px 0 44px;font-size:.9rem;color:var(--muted)}
-.f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px}
+footer{background:var(--black);border-top:1px solid var(--border);padding:60px 0 42px;font-size:.89rem;color:var(--muted)}
+.f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:34px}
 footer b{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 footer a{color:var(--muted-hi);text-decoration:none}
 footer a:hover{color:var(--gold)}
-.f-legal{margin-top:44px;padding-top:24px;border-top:1px solid var(--border);font-size:.78rem;line-height:1.65;color:#6a6a64}
+.f-legal{margin-top:42px;padding-top:24px;border-top:1px solid var(--border);font-size:.78rem;line-height:1.65;color:#6a6a64}
 </style>
 </head>
 
@@ -293,124 +372,102 @@ footer a:hover{color:var(--gold)}
 
 <div class="topbar">
 <!-- ⚑ PLACEHOLDER: seasonal urgency line. Swap or delete as the season turns. -->
-<div class="strip"><span class="ph">December dates are being claimed now — September is the month to lock yours</span></div>
+<div class="strip"><span class="ph">October through December books out first — corporate dates are being claimed now</span></div>
 
 <nav>
   <a class="nav-logo" href="#top" aria-label="Nero">
-    <img src="https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/67270Nero-logo.png" alt="Nero" />
+    <img src="img/logo-nero.png" width="800" height="800" alt="Nero" />
   </a>
   <div class="nav-links">
     <a href="#spaces">Spaces</a>
-    <a href="#packages">Packages</a>
-    <a href="#promise">Our Promise</a>
-    <a href="#gallery">Gallery</a>
+    <a href="#menus">Menus</a>
+    <a href="#bar">Bar</a>
+    <a href="#estimate">Estimate</a>
+    <a href="#features">Features</a>
   </div>
-  <a class="btn" href="#inquire">Request a Proposal</a>
+  <a class="btn" href="#inquire">Get Custom Pricing</a>
 </nav>
 </div>
 
 <!-- ══════════ HERO ══════════ -->
 <header class="hero" id="top">
-  <h1>Three floors. One address. <em>Your entire party.</em></h1>
-  <p>Nero is a three-level private event venue in Dupont Circle — a main bar, a wine tap room with a projector, a hidden speakeasy and a patio. Up to 180 guests, your own playlist on every floor, and a proposal back in your inbox within two hours.</p>
+  <h1>Dupont Circle's most flexible <em>private event venue.</em></h1>
+  <p>Corporate receptions, presentations, private dinners and full buyouts — three distinct spaces or the entire building, up to 180 guests. Family-style menus from $40 a head, published bar packages, and an events team that replies within the hour.</p>
   <div class="hero-ctas">
-    <a class="btn" href="#inquire">Request a Proposal</a>
-    <a class="btn btn-ghost" href="#spaces">See the Spaces</a>
+    <a class="btn" href="#inquire">Plan Your Event</a>
+    <a class="btn btn-ghost" href="#estimate">Estimate the Cost</a>
   </div>
+  <p class="hero-types">Corporate &amp; offsites · Holiday parties · Private dinners · Birthdays · Wedding receptions · Baby showers · NGO &amp; foundation events · Full buyouts</p>
   <div class="stats">
-    <div class="stat"><b>180+</b><span>Guests, Full Venue</span></div>
-    <div class="stat"><b>3</b><span>Private Levels</span></div>
-    <div class="stat"><b>2 hrs</b><span>Proposal Turnaround</span></div>
-    <div class="stat"><b>1</b><span>Named Event Captain</span></div>
+    <div class="stat"><b>180</b><span>Guests, Full Buyout</span></div>
+    <div class="stat"><b>3</b><span>Distinct Spaces</span></div>
+    <div class="stat"><b>$40</b><span>Menus Start At, PP</span></div>
+    <div class="stat"><b>1 hr</b><span>Typical Reply Time</span></div>
   </div>
 </header>
-
-<!-- ══════════ THE NUMBER ══════════ -->
-<section class="number" id="pricing">
-  <div class="wrap number-grid">
-    <div>
-      <div class="eyebrow">The all-in number, first</div>
-      <h2>You should not have to inquire to learn what it costs.</h2>
-      <p class="lede">Most venues make you fill out a form, wait three days, and then discover the service charge. We publish ours. Here is what a real 40-guest reception in the Wine Tap Room actually costs, every line included.</p>
-      <p class="lede" style="margin-top:14px">Your proposal arrives with this same math done for your date, your headcount and your space — not a brochure.</p>
-      <a class="btn" href="#inquire" style="margin-top:30px">Get My Number</a>
-    </div>
-
-    <div class="number-box">
-      <div style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:18px">
-        Example · <span class="ph">40 guests · Wine Tap Room · The Table</span>
-      </div>
-      <!-- ⚑ PLACEHOLDER: every figure in this box is illustrative until the client confirms package pricing. -->
-      <div class="number-row"><span>Package, 40 guests × <span class="ph">$95</span></span><span class="ph">$3,800</span></div>
-      <div class="number-row"><span>Room minimum</span><span class="ph">Met</span></div>
-      <div class="number-row"><span>Service charge, 23%</span><span class="ph">$874</span></div>
-      <div class="number-row"><span>DC sales tax, 10%</span><span class="ph">$467</span></div>
-      <div class="number-total"><span>All in</span><span class="ph">$5,141</span></div>
-      <p class="fineprint">A 23% service charge is added to all checks for private events. Of this amount, 18% is distributed directly to service staff in addition to their base wages. The remaining 5% covers other service charges, employee payroll and related operational expenses.</p>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════ SPACES ══════════ -->
 <section id="spaces">
   <div class="wrap">
-    <div class="eyebrow">The Spaces</div>
-    <h2>Four ways to take over Nero.</h2>
-    <p class="lede">Every floor is customizable, and every floor has an aux jack — bring your playlist. Nero sits at 1207 19th St NW, a short walk from Dupont Circle and Farragut North.</p>
+    <div class="eyebrow">Find Your Space</div>
+    <h2>Three rooms with three different moods — or take the whole building.</h2>
+    <p class="lede">Each floor runs its own music, so a presentation upstairs and a DJ downstairs can happen at the same time. Nero sits at 1207 19th St NW, minutes from Dupont Circle and Farragut West.</p>
 
     <div class="spaces-grid">
       <div class="space feature">
-        <div class="space-img" style="background-image:url('https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/391170I5A8199-Enhanced-NR.jpg?w=800&fit=crop&auto=compress,format&cs=origin')"></div>
+        <div class="space-img" style="background-image:url('img/space-wine-bar.jpg')"></div>
         <div class="space-body">
-          <h3>Full Venue Buyout</h3>
-          <div class="cap">180 guests + patio</div>
-          <p>All three levels, the speakeasy and the patio, exclusively yours. The right call for holiday parties, launches and anything where you do not want to share the room.</p>
+          <div class="space-head"><h3>The Wine Bar</h3><div class="cap">~60 standing</div></div>
+          <div class="best">Corporate · Presentations · DJ &amp; dancing</div>
+          <p>Our most open floor plan and the room corporate planners pick. A projector and screen for the deck, tables that move to the walls when it's time to dance, and the self-dispensing wine machine as the centerpiece.</p>
           <ul>
-            <li>Three levels, fully customizable</li>
-            <li>Patio access included</li>
-            <li>Separate music on each floor</li>
+            <li>Projector and screen</li>
+            <li>Tables clear for a dance floor</li>
+            <li>Self-dispensing wine machine, 24 rare wines</li>
           </ul>
         </div>
       </div>
 
       <div class="space">
-        <div class="space-img" style="background-image:url('https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/844130I5A1709_main.jpg?w=800&fit=crop&auto=compress,format&cs=origin')"></div>
+        <div class="space-img" style="background-image:url('img/space-sabina.jpg')"></div>
         <div class="space-body">
-          <h3>The Main Bar</h3>
-          <div class="cap">50 seated · 30 standing</div>
-          <p>The ground-floor room and the full bar program. Best for after-work receptions and dinners where you want energy and a bartender in the middle of it.</p>
+          <div class="space-head"><h3>Sabina</h3><div class="cap">~50 standing</div></div>
+          <div class="best">Private dinners · Milestone birthdays · Intimate parties</div>
+          <p>The darker, more intimate room downstairs. Low light, a cocktail-forward bar and the kind of atmosphere people remember. Most flexible midweek, and available on Sundays for private events even though we're not otherwise open.</p>
+          <ul>
+            <li>Intimate, low-lit setting</li>
+            <li>Best midweek value</li>
+            <li>Sundays available by request</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space">
+        <!-- ⚑ PLACEHOLDER: no Main Bar photo supplied. Still hotlinked from BentoBox — see IMAGE-SPEC.md -->
+        <div class="space-img" style="background-image:url('https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/844130I5A1709_main.jpg?w=900&fit=crop&auto=compress,format&cs=origin')"></div>
+        <div class="space-body">
+          <div class="space-head"><h3>The Main Bar</h3><div class="cap">~60 standing</div></div>
+          <div class="best">Usually part of a full buyout</div>
+          <p>The ground-floor room and the full cocktail program. It's rarely booked on its own — most often it comes as part of taking the whole building, where it becomes the arrival and reception space.</p>
           <ul>
             <li>Full cocktail program</li>
-            <li>Seated or standing layouts</li>
-            <li>Play your own music</li>
+            <li>Natural arrival and reception space</li>
+            <li>Ask us about booking it standalone</li>
           </ul>
         </div>
       </div>
 
       <div class="space">
-        <div class="space-img" style="background-image:url('https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/916030I5A1912_main.jpg?w=800&fit=crop&auto=compress,format&cs=origin')"></div>
+        <!-- ⚑ PLACEHOLDER: no Full Buyout photo supplied. Still hotlinked from BentoBox — see IMAGE-SPEC.md -->
+        <div class="space-img" style="background-image:url('https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/391170I5A8199-Enhanced-NR.jpg?w=900&fit=crop&auto=compress,format&cs=origin')"></div>
         <div class="space-body">
-          <h3>The Wine Tap Room</h3>
-          <div class="cap">50 seated · 30 standing</div>
-          <p>Self-serve wine by the glass and a large projector screen. The room corporate planners pick — it presents, it pours, and it does both without moving anyone.</p>
+          <div class="space-head"><h3>Full Buyout</h3><div class="cap">~180 standing · ~70 seated</div></div>
+          <div class="best">Holiday parties · Launches · Large corporate</div>
+          <p>Every room, exclusively yours. Guests move between three distinct atmospheres across the night — reception at the main bar, presentation in the wine bar, the after-party in Sabina — without anyone leaving the building.</p>
           <ul>
-            <li>Large projector screen</li>
-            <li>Self-serve wine taps</li>
-            <li>Presentations &amp; offsites</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="space">
-        <div class="space-img" style="background-image:url('https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/52056Nero_-_Cocktail_7_Large.png?w=800&fit=crop&auto=compress,format&cs=origin')"></div>
-        <div class="space-body">
-          <h3>Sabina Speakeasy</h3>
-          <div class="cap">40 seated · 25 standing</div>
-          <p>The hidden bar downstairs. Low light, a tight cocktail list, and the room people talk about the next morning. Milestone birthdays and small executive dinners.</p>
-          <ul>
-            <li>Hidden downstairs bar</li>
-            <li>Cocktail-forward service</li>
-            <li>Reserved by request</li>
+            <li>All three spaces, no shared rooms</li>
+            <li>Different music on each floor</li>
+            <li>The move for 80+ guests</li>
           </ul>
         </div>
       </div>
@@ -418,91 +475,315 @@ footer a:hover{color:var(--gold)}
   </div>
 </section>
 
-<div class="rule"></div>
-
-<!-- ══════════ PACKAGES ══════════ -->
-<section id="packages">
+<!-- ══════════ MENUS ══════════ -->
+<section class="menus" id="menus">
   <div class="wrap">
-    <div class="eyebrow">The Packages</div>
-    <h2>Three packages. Published prices. No brochure required.</h2>
-    <p class="lede">Every package is per guest and includes staffing and setup. Service charge and tax are shown on your proposal — never discovered at the end.</p>
+    <div class="eyebrow">Food Packages</div>
+    <h2>Four family-style menus. Published prices.</h2>
+    <p class="lede">Every menu is served family style — the table shares everything, so your guests get to taste it all. Available seven days a week, with salad options on request and assorted sodas included.</p>
 
-    <!-- ⚑ PLACEHOLDER: package names, prices, minimums and inclusions below are a proposed structure
-         built from Nero's actual spaces. All of it is pending client confirmation. See CLIENT-QUESTIONS.md -->
-    <div class="pk-grid">
-      <div class="pk">
-        <h3 class="ph">The Reception</h3>
-        <div class="price"><span class="ph">$75</span> <small>/ guest</small></div>
-        <div class="min"><span class="ph">20 guest minimum</span></div>
-        <ul>
-          <li class="ph">Two hours of passed bites, six selections</li>
-          <li class="ph">Beer, wine and a house cocktail</li>
-          <li class="ph">Standing reception setup</li>
-          <li class="ph">Dedicated bartender</li>
+    <div class="menu-grid">
+      <div class="menu">
+        <h3>Augustus' Cena</h3>
+        <div class="price">$40 <small>/ person</small></div>
+        <div class="who">Receptions and casual gatherings where the food supports the room.</div>
+        <ul class="counts">
+          <li><span>Antipasto</span><span>up to 3</span></li>
+          <li><span>Piatto unico</span><span>up to 3</span></li>
+          <li><span>Dolce</span><span>up to 2</span></li>
         </ul>
-        <a class="btn btn-ghost" href="#inquire">Request This</a>
+        <div class="dessert">Dessert course <b>+$7</b> per person</div>
+        <a class="btn btn-ghost" href="#estimate" data-menu="40">Price It Out</a>
       </div>
 
-      <div class="pk loved">
-        <div class="pk-tag">Most Booked</div>
-        <h3 class="ph">The Table</h3>
-        <div class="price"><span class="ph">$110</span> <small>/ guest</small></div>
-        <div class="min"><span class="ph">30 guest minimum</span></div>
-        <ul>
-          <li class="ph">Three-course family-style dinner</li>
-          <li class="ph">Two hours of full open bar</li>
-          <li class="ph">Seated layout, your floor plan</li>
-          <li class="ph">Menu cards printed with your event name</li>
-          <li class="ph">Dietary needs handled by default</li>
+      <div class="menu">
+        <h3>Caesar's Cena</h3>
+        <div class="price">$55 <small>/ person</small></div>
+        <div class="who">A step up in the mains — lasagna and meatballs join the table.</div>
+        <ul class="counts">
+          <li><span>Antipasto</span><span class="ph">up to 3</span></li>
+          <li><span>Piatto unico</span><span>up to 3</span></li>
+          <li><span>Dolce</span><span>up to 2</span></li>
         </ul>
-        <a class="btn" href="#inquire">Request This</a>
+        <div class="dessert">Dessert course <b>+$5</b> per person</div>
+        <a class="btn btn-ghost" href="#estimate" data-menu="55">Price It Out</a>
       </div>
 
-      <div class="pk">
-        <h3 class="ph">The Buyout</h3>
-        <div class="price">from <span class="ph">$150</span> <small>/ guest</small></div>
-        <div class="min"><span class="ph">80 guest minimum</span></div>
-        <ul>
-          <li class="ph">All three levels plus the patio</li>
-          <li class="ph">Chef-selected menu, tasted in advance</li>
-          <li class="ph">Premium open bar, four hours</li>
-          <li class="ph">Sabina speakeasy included</li>
-          <li class="ph">Separate music on each floor</li>
+      <div class="menu loved">
+        <div class="menu-tag">Corporate Favorite</div>
+        <h3>Nero's Cena</h3>
+        <div class="price">$75 <small>/ person</small></div>
+        <div class="who">The balance most corporate groups land on. Calamari, burrata linguine, grilled shrimp salad.</div>
+        <ul class="counts">
+          <li><span>Antipasto</span><span>up to 4</span></li>
+          <li><span>Piatto unico</span><span>up to 3</span></li>
+          <li><span>Dolce</span><span>up to 2</span></li>
         </ul>
-        <a class="btn btn-ghost" href="#inquire">Request This</a>
+        <div class="dessert">Dessert course <b>+$3</b> per person</div>
+        <a class="btn" href="#estimate" data-menu="75">Price It Out</a>
+      </div>
+
+      <div class="menu">
+        <h3>Sabina's Cena</h3>
+        <div class="price">$110 <small>/ person</small></div>
+        <div class="who">The full table. Lobster ravioli, airline chicken, meats and cheeses, miniature desserts.</div>
+        <ul class="counts">
+          <li><span>Antipasto</span><span>up to 5</span></li>
+          <li><span>Piatto unico</span><span>up to 4</span></li>
+          <li><span>Dolce</span><span>up to 2</span></li>
+        </ul>
+        <div class="dessert">Dessert course <b>included</b></div>
+        <a class="btn btn-ghost" href="#estimate" data-menu="110">Price It Out</a>
+      </div>
+    </div>
+
+    <div class="menu-note">
+      <div>
+        <b>Served family style</b>
+        The table shares every dish. Nobody picks one plate and wonders about the others.
+      </div>
+      <div>
+        <b>Platters &amp; custom formats</b>
+        Prefer passed platters or a mixed format? Most menu items can be served that way, and some event-only dishes never appear on the regular menu. Ask and we'll build it.
+      </div>
+      <div>
+        <b>Dietary needs</b>
+        Vegetarian, gluten-free and allergy plates are handled as part of planning — tell us in your inquiry and it's taken care of.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ BILL OF RIGHTS ══════════ -->
-<section class="bor" id="promise">
+<!-- ══════════ BAR ══════════ -->
+<section id="bar">
   <div class="wrap">
-    <div class="eyebrow">The Booker's Bill of Rights</div>
+    <div class="eyebrow">Beverage</div>
+    <h2>Package the bar, or keep it open and flexible.</h2>
+    <p class="lede">Most of our events run on a host tab or individual tabs — packages come into their own for large corporate groups where the budget needs to be fixed in advance. Both are easy; we'll tell you which fits your headcount.</p>
+
+    <div class="bar-grid">
+      <div class="bev">
+        <h3>The Plebian's</h3>
+        <div class="kind">Limited bar</div>
+        <ul>
+          <li>2 premium red wines</li>
+          <li>2 white wines</li>
+          <li>1 rosé and prosecco</li>
+          <li>4 brew options</li>
+        </ul>
+        <div class="hours">
+          <div><b>$35</b><span>2 Hours, PP</span></div>
+          <div><b>$47</b><span>3 Hours, PP</span></div>
+        </div>
+      </div>
+
+      <div class="bev">
+        <h3>The Gladiator's</h3>
+        <div class="kind">Full bar · Call brands</div>
+        <ul>
+          <li>1 cocktail of your choice</li>
+          <li>Tito's, Milagro, Tanqueray, Bacardi, Maker's Mark, Bulleit</li>
+          <li>2 premium reds, 2 premium whites</li>
+          <li>1 rosé, prosecco, 4 brews</li>
+        </ul>
+        <div class="hours">
+          <div><b>$60</b><span>2 Hours, PP</span></div>
+          <div><b>$80</b><span>3 Hours, PP</span></div>
+        </div>
+      </div>
+
+      <div class="bev">
+        <h3>The Emperor's</h3>
+        <div class="kind">Full bar · Premium</div>
+        <ul>
+          <li>2 cocktails of your choice</li>
+          <li>Grey Goose, Hendrick's, Johnnie Walker Black, Espolón, Suntory and more</li>
+          <li>3 premium reds, 2 premium whites</li>
+          <li>Preset sparkling toast for every guest</li>
+        </ul>
+        <div class="hours">
+          <div><b>$85</b><span>2 Hours, PP</span></div>
+          <div><b>$110</b><span>3 Hours, PP</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bar-alt">
+      <div>
+        <b>Host tab</b>
+        <p>You set the limit, we run the bar against it and stop where you say. The most common choice for corporate events that want control without a fixed per-head cost.</p>
+      </div>
+      <div>
+        <b>Individual tabs</b>
+        <p>Guests open their own tabs and order anything on the full menu. Nothing on your bill, complete freedom for them.</p>
+      </div>
+      <div>
+        <b>On consumption</b>
+        <p>Pay for exactly what's poured. Often the cheaper route for shorter events or groups that drink lightly.</p>
+      </div>
+      <div>
+        <b>Wine cards · $200 minimum</b>
+        <p>Load a card for the self-dispensing machine and let guests explore 24 rare wines in 2, 3 or 5 oz pours. A tasting experience, not just a drink.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ESTIMATOR ══════════ -->
+<section class="est" id="estimate">
+  <div class="wrap">
+    <div class="eyebrow">Estimate the cost</div>
+    <h2>Your all-in number, before you talk to anyone.</h2>
+    <p class="lede">Most venues make you inquire to find out what it costs, then surprise you with the fees at the end. Move the numbers below and see the real total — tax, event fee and gratuity included.</p>
+
+    <div class="est-grid">
+      <div class="est-controls">
+        <div class="est-field">
+          <label for="est-guests">Guest count</label>
+          <input type="number" id="est-guests" value="40" min="10" max="180" step="5" />
+        </div>
+
+        <div class="est-field">
+          <label for="est-food">Food package</label>
+          <select id="est-food">
+            <option value="40">Augustus' Cena — $40 pp</option>
+            <option value="55">Caesar's Cena — $55 pp</option>
+            <option value="75" selected>Nero's Cena — $75 pp</option>
+            <option value="110">Sabina's Cena — $110 pp</option>
+          </select>
+        </div>
+
+        <div class="est-field" id="est-dessert-wrap">
+          <label class="chk" for="est-dessert">
+            <input type="checkbox" id="est-dessert" />
+            <span>Add the dessert course <span id="est-dessert-price">(+$3 pp)</span></span>
+          </label>
+        </div>
+
+        <div class="est-field">
+          <label for="est-bev">Beverage approach</label>
+          <select id="est-bev">
+            <option value="tab" selected>Host tab / on consumption</option>
+            <option value="35">The Plebian's — limited bar</option>
+            <option value="60">The Gladiator's — full bar, call brands</option>
+            <option value="85">The Emperor's — full bar, premium</option>
+          </select>
+        </div>
+
+        <div class="est-field" id="est-hours-wrap" style="display:none">
+          <label>Bar duration</label>
+          <div class="seg">
+            <button type="button" id="est-h2" aria-pressed="true">2 hours</button>
+            <button type="button" id="est-h3" aria-pressed="false">3 hours</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="est-out">
+        <div class="est-line sub"><span id="est-food-label">Food, 40 guests</span><span id="est-food-total">$3,000</span></div>
+        <div class="est-line sub" id="est-bev-row"><span id="est-bev-label">Beverage</span><span id="est-bev-total">On consumption</span></div>
+        <div class="est-line sub"><span>Subtotal</span><span id="est-subtotal">$3,000</span></div>
+        <div class="est-line fee"><span>DC sales tax, 10%</span><span id="est-tax">$300</span></div>
+        <div class="est-line fee"><span>Event fee, 5%</span><span id="est-fee">$150</span></div>
+        <div class="est-line fee"><span>Gratuity, 18%</span><span id="est-grat">$540</span></div>
+        <div class="est-total"><span>Estimated all in</span><span id="est-total">$3,990</span></div>
+        <div class="est-pp" id="est-pp">$99.75 per guest</div>
+        <a class="btn est-cta" href="#inquire" id="est-send">Send This to the Events Team</a>
+        <p class="est-fine">An estimate, not a quote. Your final number depends on the room, the day, the time and what you want the night to be — a Saturday buyout prices differently from a Tuesday dinner in Sabina. Bar spend on a tab or consumption basis isn't included above. All menu prices are exclusive of 10% DC sales tax, 5% event fee and 18% gratuity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOW PRICING WORKS ══════════ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">How pricing works</div>
+    <h2>Published menus. Customized quotes.</h2>
+    <p class="lede">The menu and bar prices above are real and they don't move. What does move is everything around them — which is why your quote is built for your event rather than pulled off a shelf.</p>
+
+    <div class="hpw-grid">
+      <div><b>The room</b><p>Sabina on a Saturday is not Sabina on a Tuesday. The wine bar prices differently from a full buyout.</p></div>
+      <div><b>Day and time</b><p>Weeknights and Sundays are our most flexible. Saturday nights in December are our least.</p></div>
+      <div><b>Guest count</b><p>Minimums move with the room and the date. Larger groups often unlock better per-head economics.</p></div>
+      <div><b>What you need</b><p>Seated dinner versus a standing reception, a DJ, projection, a mixed platter format — each shapes staffing and setup.</p></div>
+    </div>
+
+    <div class="menu-note" style="margin-top:22px">
+      <div>
+        <b>What's always added</b>
+        Every quote carries 10% DC sales tax, a 5% event fee and 18% gratuity on top of menu prices. We publish that here rather than at signature.
+      </div>
+      <div>
+        <b>What you'll get back</b>
+        A written proposal with the room, the menu, the bar approach and one final number — usually within the hour.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FEATURES ══════════ -->
+<section class="feat" id="features">
+  <div class="wrap">
+    <div class="eyebrow">Event features</div>
+    <h2>Built to be rearranged around you.</h2>
+
+    <div class="feat-grid">
+      <div class="feat-item"><b>Projector &amp; screen</b><p>In the wine bar. Bring a deck, a slideshow or a photo montage — plug in and run it.</p></div>
+      <div class="feat-item"><b>DJ-friendly</b><p>Bring your own DJ. Tables move to the walls and the room becomes a dance floor.</p></div>
+      <div class="feat-item"><b>Music by floor</b><p>Each space runs independently. A presentation on one floor and a party on another, at the same time.</p></div>
+      <div class="feat-item"><b>Outside vendors welcome</b><p>Florists, photographers, decorators, DJs — bring the people you want. Setup usually starts 30 minutes before doors.</p></div>
+      <div class="feat-item"><b>Flexible layouts</b><p>Seated dinner, standing reception, presentation rows, or a mix as the night moves. Furniture is not fixed.</p></div>
+      <div class="feat-item"><b>The wine machine</b><p>A self-dispensing wall of 24 rare wines in 2, 3 and 5 oz pours. It becomes the thing guests talk about.</p></div>
+      <div class="feat-item"><b>Getting here</b><p>1207 19th St NW. Street parking plus a garage less than a block away. Dupont Circle and Farragut West both walkable.</p></div>
+      <div class="feat-item"><b>Seven days a week</b><p>Every banquet menu is available any day — including Sundays in Sabina, when we're not otherwise open.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE PROMISE ══════════ -->
+<section id="promise">
+  <div class="wrap">
+    <div class="eyebrow">What we commit to</div>
     <h2>Four things we put in writing.</h2>
-    <p class="lede">Planning an event is a job someone gave you on top of your actual job. These are the four places venues usually make that harder — so we committed to the opposite.</p>
+    <p class="lede">Planning an event is usually a job someone handed you on top of your actual job. These are the four places venues tend to make that harder.</p>
 
     <div class="bor-grid">
       <div class="bor-item">
         <div class="n">01</div>
-        <h3>A proposal in two hours.</h3>
-        <p>Not two days. Inquiries that land during service get a real, priced proposal back the same afternoon — with the room held while you decide.</p>
+        <h3>A reply within the hour.</h3>
+        <p>Not two days. Inquiries that land during business hours get a real, priced response the same hour — and overnight requests are answered first thing.</p>
       </div>
       <div class="bor-item">
         <div class="n">02</div>
         <h3>Your all-in number, up front.</h3>
-        <p>Package, service charge and tax on one line before you commit to anything. The 23% service charge is published on this page, not buried in a contract.</p>
+        <p>Menu prices are published on this page, and so are the 10% tax, 5% event fee and 18% gratuity. Nothing appears at signature that wasn't here first.</p>
       </div>
       <div class="bor-item">
         <div class="n">03</div>
-        <h3>One named captain.</h3>
-        <p>The same person from your first email to the last round. No handoff to a manager who has not read the thread.</p>
+        <h3>One named contact.</h3>
+        <p>The same person from your first email through to the last round, so you never re-explain your event to someone who hasn't read the thread.</p>
       </div>
       <div class="bor-item">
         <div class="n">04</div>
-        <h3>Dietary needs by default.</h3>
-        <p>Vegetarian, gluten-free and allergy plates are built into every package. You do not have to ask, and your guest does not have to explain.</p>
+        <h3>Yes to the awkward asks.</h3>
+        <p>Outside vendors, your own cake, a specific layout, a Sunday. Start from yes — tell us what you need and we'll tell you honestly if it can't be done.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROCESS ══════════ -->
+<section class="feat" id="process">
+  <div class="wrap">
+    <div class="eyebrow">The inquiry process</div>
+    <h2>Four steps, and the first one takes two minutes.</h2>
+
+    <div class="steps">
+      <div class="step"><b>Step 01</b><h3>Send the details</h3><p>Date, headcount, and roughly what you're picturing. If you don't know the room yet, say so — we'll recommend one.</p></div>
+      <div class="step"><b>Step 02</b><h3>Hear back within the hour</h3><p>A real person, not an autoresponder, with availability and the questions that actually change your quote.</p></div>
+      <div class="step"><b>Step 03</b><h3>Get a customized quote</h3><p>Room, menu, bar approach and one all-in number. We hold your date while you decide.</p></div>
+      <div class="step"><b>Step 04</b><h3>Lock the details</h3><p>Menu selections, layout, vendors, timing. Then you show up and we run it.</p></div>
     </div>
   </div>
 </section>
@@ -513,11 +794,11 @@ footer a:hover{color:var(--gold)}
     <div class="eyebrow">The Room</div>
     <h2>What the night actually looks like.</h2>
     <div class="gal">
-      <figure><img loading="lazy" src="https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/391170I5A8199-Enhanced-NR.jpg?w=1200&fit=crop&auto=compress,format&cs=origin" alt="A full room at Nero during a private event" /><figcaption>The full room, mid-toast</figcaption></figure>
-      <figure><img loading="lazy" src="https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/844130I5A1709_main.jpg?w=800&fit=crop&auto=compress,format&cs=origin" alt="The main bar at Nero" /><figcaption>The main bar</figcaption></figure>
-      <figure><img loading="lazy" src="https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/916030I5A1912_main.jpg?w=800&fit=crop&auto=compress,format&cs=origin" alt="The wine tap room at Nero" /><figcaption>Wine on tap</figcaption></figure>
-      <figure><img loading="lazy" src="https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/71859DIH03592.jpg?w=800&fit=max&auto=compress,format&cs=origin" alt="Guests dancing at Nero" /><figcaption>Later in the evening</figcaption></figure>
-      <figure><img loading="lazy" src="https://images.getbento.com/accounts/64699d59f88cf281b2cdfcbc3c236af9/media/images/52056Nero_-_Cocktail_7_Large.png?w=800&fit=crop&auto=compress,format&cs=origin" alt="A cocktail at Sabina speakeasy" /><figcaption>Downstairs at Sabina</figcaption></figure>
+      <figure><img loading="lazy" width="1600" height="1200" src="img/gallery-01-full-room.jpg" alt="A large corporate group at a private event in Nero's wine bar" /><figcaption>A full room, wine wall behind</figcaption></figure>
+      <figure><img loading="lazy" width="1000" height="750" src="img/gallery-04-screen.jpg" alt="A celebration in front of the projector screen at Nero" /><figcaption>The screen, put to use</figcaption></figure>
+      <figure><img loading="lazy" width="1000" height="750" src="img/gallery-03-wine-machine.jpg" alt="The wine bar and self-dispensing wine machine" /><figcaption>The wine machine</figcaption></figure>
+      <figure><img loading="lazy" width="1000" height="750" src="img/gallery-02-dancing.jpg" alt="Guests dancing at Nero" /><figcaption>Later in the evening</figcaption></figure>
+      <figure><img loading="lazy" width="1000" height="750" src="img/gallery-05-sabina-bar.jpg" alt="Guests at the bar in Sabina" /><figcaption>Downstairs at Sabina</figcaption></figure>
     </div>
   </div>
 </section>
@@ -526,7 +807,7 @@ footer a:hover{color:var(--gold)}
 <section style="padding-top:0">
   <div class="wrap quote">
     <!-- ⚑ PLACEHOLDER: needs one real quote from a past booker. Ask the client for permission + name/title/company. -->
-    <blockquote class="ph">"I sent the same email to six venues in Dupont. Nero was the only one that came back with an actual price the same day. That decided it before we ever walked in."</blockquote>
+    <blockquote class="ph">"I sent the same email to six venues in Dupont. Nero came back the same hour with an actual price. That decided it before we ever walked in."</blockquote>
     <cite class="ph">Placeholder — pending a real client quote</cite>
   </div>
 </section>
@@ -535,19 +816,20 @@ footer a:hover{color:var(--gold)}
 <section class="form-sec" id="inquire">
   <div class="wrap form-grid">
     <div class="form-side">
-      <div class="eyebrow">Request a Proposal</div>
+      <div class="eyebrow">Get Custom Pricing</div>
       <h2>Tell us the date. We'll send the number.</h2>
-      <p class="lede">Two minutes to fill out. A real proposal back within two hours during business hours, and first thing the next morning otherwise.</p>
+      <p class="lede">Two minutes to fill out, and a real reply within the hour during business hours.</p>
       <ul>
         <li>A priced proposal, not a callback request</li>
-        <li>Your room held while you decide</li>
-        <li>One named captain from here on</li>
+        <li>Your date held while you decide</li>
+        <li>One named contact from here on</li>
+        <li>Not sure which room? We'll recommend one</li>
       </ul>
 
       <div class="direct">
         <b>Rather just call?</b>
         <a href="tel:+12029646201">202-964-6201</a><br />
-        <!-- ⚑ PLACEHOLDER: swap for the named events captain's direct email once the client confirms who owns inquiries. -->
+        <!-- ⚑ PLACEHOLDER: swap for the named events contact's direct email once confirmed. -->
         <a class="ph" href="mailto:events@nerowashdc.com">events@nerowashdc.com</a><br />
         <span style="color:var(--muted);font-size:.85rem">1207 19th St NW, Washington, DC 20036</span>
       </div>
@@ -557,27 +839,241 @@ footer a:hover{color:var(--gold)}
       <h3>Start your proposal</h3>
       <p class="sub">Fields marked required are all we need to price it.</p>
 
-      <div id="ts-form-mount">
-        <div id="ts-loading">Loading the request form…</div>
+      <div id="est-carry"></div>
 
-        <!-- ═══════════════════════════════════════════════════════
-             TRIPLESEAT EMBED — must stay INLINE and SYNCHRONOUS.
-             Their script writes the form into the document at this
-             exact position. Do not move it, defer it, or inject it
-             with JS: it renders where the tag sits, and an async
-             insert after page load can blank the page.
+      <form id="lead-form" novalidate>
+        <!-- Spam trap. Real people never see or fill this. -->
+        <div class="hp" aria-hidden="true">
+          <label for="company_url">Leave this empty</label>
+          <input type="text" id="company_url" name="company_url" tabindex="-1" autocomplete="off" />
+        </div>
 
-             ⚑ PLACEHOLDER: LEAD_FORM_ID and PUBLIC_KEY come from
-             TripleSeat → Settings → Lead Forms → View Setup Codes.
-             ═══════════════════════════════════════════════════════ -->
-        <script src="https://api.tripleseat.com/v1/leads/ts_script.js?lead_form_id=LEAD_FORM_ID&public_key=PUBLIC_KEY&inline_form=true"></script>
-      </div>
+        <fieldset>
+          <legend>Your details</legend>
+          <div class="row2">
+            <div class="fld">
+              <label for="first_name">First name <span class="req">*</span></label>
+              <input type="text" id="first_name" name="first_name" autocomplete="given-name" required />
+              <div class="err">Required</div>
+            </div>
+            <div class="fld">
+              <label for="last_name">Last name <span class="req">*</span></label>
+              <input type="text" id="last_name" name="last_name" autocomplete="family-name" required />
+              <div class="err">Required</div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="fld">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+              <div class="err">Enter a valid email</div>
+            </div>
+            <div class="fld">
+              <label for="phone">Phone <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required />
+              <div class="err">Required</div>
+            </div>
+          </div>
+        </fieldset>
 
-      <div id="ts-fallback">
-        <p>The form is having trouble loading. We do not want to lose your inquiry — call or email us directly and we will get you a proposal today.</p>
-        <a class="btn" href="tel:+12029646201">Call 202-964-6201</a>
-        <a class="btn btn-ghost ph" style="margin-left:10px" href="mailto:events@nerowashdc.com?subject=Private%20Event%20Inquiry">Email Us</a>
-      </div>
+        <fieldset>
+          <legend>Your event</legend>
+          <div class="row2">
+            <div class="fld">
+              <label for="event_date">Event date <span class="req">*</span></label>
+              <input type="date" id="event_date" name="event_date" required />
+              <div class="err">Required</div>
+            </div>
+            <div class="fld">
+              <label for="guest_count">Guest count <span class="req">*</span></label>
+              <input type="number" id="guest_count" name="guest_count" min="1" max="400" required />
+              <div class="err">Required</div>
+            </div>
+          </div>
+          <div class="fld">
+            <label for="event_type">Event type <span class="req">*</span></label>
+            <select id="event_type" name="event_type" required>
+              <option value="">Select one…</option>
+              <option>Corporate event or offsite</option>
+              <option>Holiday party</option>
+              <option>Presentation or meeting</option>
+              <option>Private dinner</option>
+              <option>Birthday</option>
+              <option>Wedding reception</option>
+              <option>Baby or bridal shower</option>
+              <option>NGO or foundation event</option>
+              <option>Dance party</option>
+              <option>Full buyout</option>
+              <option>Other</option>
+            </select>
+            <div class="err">Required</div>
+          </div>
+          <div class="fld">
+            <label>Is this a corporate or social event? <span class="req">*</span></label>
+            <div class="segrow">
+              <label><input type="radio" name="audience" value="Corporate" required /><span>Corporate</span></label>
+              <label><input type="radio" name="audience" value="Social" /><span>Social</span></label>
+            </div>
+            <div class="err">Required</div>
+          </div>
+        </fieldset>
+
+        <button type="button" class="more-toggle" id="more-toggle" aria-expanded="false" aria-controls="more-fields">
+          + Add details so we can price it precisely
+        </button>
+
+        <div id="more-fields">
+          <p class="more-hint">All optional. Anything you skip, we'll ask about in our reply — you won't be held up.</p>
+
+          <fieldset>
+            <legend>Space &amp; timing</legend>
+            <div class="fld">
+              <label for="company">Company or organization</label>
+              <input type="text" id="company" name="company" autocomplete="organization" />
+            </div>
+            <div class="fld">
+              <label for="alt_date">Alternate or flexible date</label>
+              <input type="text" id="alt_date" name="alt_date" placeholder="e.g. the following Thursday, or flexible in December" />
+            </div>
+            <div class="row2">
+              <div class="fld"><label for="start_time">Start time</label><input type="time" id="start_time" name="start_time" /></div>
+              <div class="fld"><label for="end_time">End time</label><input type="time" id="end_time" name="end_time" /></div>
+            </div>
+            <div class="fld">
+              <label for="space">Preferred space</label>
+              <select id="space" name="space">
+                <option value="">Not sure — recommend one for me</option>
+                <option>The Wine Bar (~60 standing)</option>
+                <option>Sabina (~50 standing)</option>
+                <option>The Main Bar (~60 standing)</option>
+                <option>Full buyout (~180 standing)</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Food</legend>
+            <div class="fld">
+              <label for="food_style">Do you want food?</label>
+              <select id="food_style" name="food_style">
+                <option value="">Not sure yet</option>
+                <option>Yes — a banquet package</option>
+                <option>Yes — platters or something custom</option>
+                <option>No food</option>
+              </select>
+            </div>
+            <div class="fld">
+              <label for="food_package">Which banquet package?</label>
+              <select id="food_package" name="food_package">
+                <option value="">Not sure</option>
+                <option>Augustus' Cena — $40 pp</option>
+                <option>Caesar's Cena — $55 pp</option>
+                <option>Nero's Cena — $75 pp</option>
+                <option>Sabina's Cena — $110 pp</option>
+              </select>
+            </div>
+            <div class="fld">
+              <div class="chkgrid">
+                <label class="chkline"><input type="checkbox" name="salad" value="Yes" /><span>Add salad options</span></label>
+                <label class="chkline"><input type="checkbox" name="dessert" value="Yes" /><span>Add the dessert course</span></label>
+              </div>
+            </div>
+            <div class="fld">
+              <label for="dietary">Dietary restrictions</label>
+              <input type="text" id="dietary" name="dietary" placeholder="e.g. 3 vegetarian, 1 gluten-free, 1 nut allergy" />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Beverage</legend>
+            <div class="fld">
+              <label for="bev_style">How would you like to handle drinks?</label>
+              <select id="bev_style" name="bev_style">
+                <option value="">Not sure</option>
+                <option>Host tab</option>
+                <option>Individual tabs</option>
+                <option>On consumption</option>
+                <option>A beverage package</option>
+                <option>Wine cards</option>
+              </select>
+            </div>
+            <div class="fld">
+              <label for="bev_package">Which beverage package?</label>
+              <select id="bev_package" name="bev_package">
+                <option value="">Not sure</option>
+                <option>The Plebian's — limited bar</option>
+                <option>The Gladiator's — full bar, call brands</option>
+                <option>The Emperor's — full bar, premium</option>
+              </select>
+            </div>
+            <div class="fld">
+              <label>Bar duration</label>
+              <div class="segrow">
+                <label><input type="radio" name="bev_hours" value="2 hours" /><span>2 hours</span></label>
+                <label><input type="radio" name="bev_hours" value="3 hours" /><span>3 hours</span></label>
+                <label><input type="radio" name="bev_hours" value="Not sure" /><span>Not sure</span></label>
+              </div>
+            </div>
+            <div class="fld">
+              <label class="chkline"><input type="checkbox" name="toast" value="Yes" /><span>Sparkling toast for every guest</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Setup</legend>
+            <div class="fld">
+              <div class="chkgrid">
+                <label class="chkline"><input type="checkbox" name="setup" value="Projector / screen" /><span>Projector &amp; screen</span></label>
+                <label class="chkline"><input type="checkbox" name="setup" value="Bringing a DJ" /><span>Bringing a DJ</span></label>
+                <label class="chkline"><input type="checkbox" name="setup" value="Dancing space" /><span>Space for dancing</span></label>
+                <label class="chkline"><input type="checkbox" name="setup" value="Seated dinner layout" /><span>Seated dinner layout</span></label>
+                <label class="chkline"><input type="checkbox" name="setup" value="Outside vendors" /><span>Outside vendors</span></label>
+                <label class="chkline"><input type="checkbox" name="setup" value="Bringing a cake" /><span>Bringing a cake</span></label>
+              </div>
+            </div>
+            <div class="fld">
+              <label for="setup_notes">Special setup requests</label>
+              <input type="text" id="setup_notes" name="setup_notes" />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Budget &amp; priorities</legend>
+            <div class="fld">
+              <label for="budget">Budget range</label>
+              <select id="budget" name="budget">
+                <option value="">Not sure yet</option>
+                <option>Under $2,000</option>
+                <option>$2,000 – $5,000</option>
+                <option>$5,000 – $10,000</option>
+                <option>$10,000 – $20,000</option>
+                <option>$20,000+</option>
+              </select>
+            </div>
+            <div class="fld">
+              <label>What matters most?</label>
+              <div class="chkgrid">
+                <label class="chkline"><input type="checkbox" name="priorities" value="Atmosphere" /><span>Atmosphere</span></label>
+                <label class="chkline"><input type="checkbox" name="priorities" value="Privacy" /><span>Privacy</span></label>
+                <label class="chkline"><input type="checkbox" name="priorities" value="Food" /><span>Food</span></label>
+                <label class="chkline"><input type="checkbox" name="priorities" value="Drinks" /><span>Drinks</span></label>
+                <label class="chkline"><input type="checkbox" name="priorities" value="AV / presentation" /><span>AV / presentation</span></label>
+                <label class="chkline"><input type="checkbox" name="priorities" value="Dancing" /><span>Dancing</span></label>
+                <label class="chkline"><input type="checkbox" name="priorities" value="Convenience" /><span>Convenience</span></label>
+                <label class="chkline"><input type="checkbox" name="priorities" value="Budget" /><span>Budget</span></label>
+              </div>
+            </div>
+            <div class="fld">
+              <label for="notes">Anything else we should know?</label>
+              <textarea id="notes" name="notes"></textarea>
+            </div>
+          </fieldset>
+        </div>
+
+        <button type="submit" class="btn" id="form-submit">Request My Proposal</button>
+        <div id="form-status"></div>
+        <p class="form-legal">We'll only use your details to respond to this inquiry.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -594,85 +1090,296 @@ footer a:hover{color:var(--gold)}
       <div>
         <b>This Page</b>
         <a href="#spaces">Spaces</a><br />
-        <a href="#packages">Packages</a><br />
-        <a href="#promise">Our Promise</a><br />
-        <a href="#inquire">Request a Proposal</a>
+        <a href="#menus">Food Packages</a><br />
+        <a href="#bar">Beverage</a><br />
+        <a href="#estimate">Cost Estimator</a><br />
+        <a href="#inquire">Get Custom Pricing</a>
       </div>
       <div>
         <b>Elsewhere</b>
         <a href="https://www.nerowashdc.com/" target="_blank" rel="noopener">Main Site</a><br />
-        <a href="https://www.nerowashdc.com/menus/" target="_blank" rel="noopener">Menus</a><br />
+        <a href="https://www.nerowashdc.com/menus/" target="_blank" rel="noopener">Restaurant Menus</a><br />
         <a href="https://www.nerowashdc.com/private-events/" target="_blank" rel="noopener">Legacy Events Page</a>
       </div>
       <div>
-        <b>Event Types</b>
-        <span style="color:var(--muted)">Corporate &amp; offsites · Holiday parties · Cocktail receptions · Luncheons · Weddings &amp; engagements · Birthdays · Graduations · Bar &amp; bat mitzvahs</span>
+        <b>We Host</b>
+        <span style="color:var(--muted)">Corporate events &amp; offsites · Holiday parties · Presentations · Private dinners · Birthdays · Wedding receptions · Baby showers · NGO &amp; foundation events · Dance parties · Full buyouts</span>
       </div>
     </div>
-    <p class="f-legal">A 23% service charge will be added to all checks for private events. Of this amount, 18% will be directly distributed to service staff in addition to their base wages. The remaining 5% will be allocated toward covering other service charges, employee payroll, and related operational expenses.<br /><br />© Nero Washington DC. All rights reserved.</p>
+    <p class="f-legal">All menu and beverage prices are exclusive of 10% DC sales tax, 5% event fee and 18% gratuity. Estimates shown on this page are indicative only and do not constitute a quote; final pricing depends on space, date, time, guest count and event requirements.<br /><br />© Nero Washington DC. All rights reserved.</p>
   </div>
 </footer>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     FORM WATCHDOG + ATTRIBUTION ENRICHMENT
-     The embed itself is inline in #ts-form-mount above; this only
-     watches it, styles around it, and catches the failure case.
+     ESTIMATOR + FORM WATCHDOG
      ═══════════════════════════════════════════════════════════════ -->
 <script>
 (function () {
   'use strict';
 
-  var attr  = window.NERO_ATTR || {};
-  var mount = document.getElementById('ts-form-mount');
-  var loader = document.getElementById('ts-loading');
-  if (!mount) return;
+  /* ─────────── 1. Cost estimator ─────────── */
+  var TAX = 0.10, FEE = 0.05, GRAT = 0.18;
+  var DESSERT = { 40:7, 55:5, 75:3, 110:0 };
+  var BEV = { 35:{2:35,3:47}, 60:{2:60,3:80}, 85:{2:85,3:110} };
+  var BEV_NAME = { 35:"The Plebian's", 60:"The Gladiator's", 85:"The Emperor's" };
 
-  /* Best-effort: push attribution into the TripleSeat form.
-     Works if the client adds matching custom questions in TripleSeat
-     (CLIENT-QUESTIONS.md §3, item 15). Silently no-ops if they don't. */
-  function enrichForm() {
-    Object.keys(attr).forEach(function (k) {
-      var field = mount.querySelector('[name*="' + k + '"]');
-      if (field && !field.value) field.value = attr[k];
+  var $ = function (id) { return document.getElementById(id); };
+  var guests = $('est-guests'), food = $('est-food'), dessert = $('est-dessert'),
+      bev = $('est-bev'), hoursWrap = $('est-hours-wrap'), h2 = $('est-h2'), h3 = $('est-h3');
+  var barHours = 2;
+
+  function money(n) {
+    return '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  }
+
+  function recalc() {
+    var g = Math.max(1, Math.min(400, parseInt(guests.value, 10) || 0));
+    var f = parseInt(food.value, 10);
+    var dAdd = DESSERT[f] || 0;
+
+    /* Dessert toggle: hide entirely for the tier that includes it. */
+    if (dAdd === 0) {
+      $('est-dessert-wrap').style.display = 'none';
+      dessert.checked = false;
+    } else {
+      $('est-dessert-wrap').style.display = '';
+      $('est-dessert-price').textContent = '(+$' + dAdd + ' pp)';
+    }
+
+    var foodPP = f + (dessert.checked ? dAdd : 0);
+    var foodTotal = foodPP * g;
+
+    var bevPP = 0, bevTotal = 0, bevIsPackage = bev.value !== 'tab';
+    hoursWrap.style.display = bevIsPackage ? '' : 'none';
+    if (bevIsPackage) {
+      bevPP = BEV[bev.value][barHours];
+      bevTotal = bevPP * g;
+    }
+
+    var subtotal = foodTotal + bevTotal;
+    var tax = subtotal * TAX, fee = subtotal * FEE, grat = subtotal * GRAT;
+    var total = subtotal + tax + fee + grat;
+
+    $('est-food-label').textContent = 'Food, ' + g + ' guest' + (g === 1 ? '' : 's') + ' × $' + foodPP;
+    $('est-food-total').textContent = money(foodTotal);
+
+    if (bevIsPackage) {
+      $('est-bev-label').textContent = BEV_NAME[bev.value] + ', ' + barHours + ' hrs × $' + bevPP;
+      $('est-bev-total').textContent = money(bevTotal);
+    } else {
+      $('est-bev-label').textContent = 'Beverage';
+      $('est-bev-total').textContent = 'Tab / consumption';
+    }
+
+    $('est-subtotal').textContent = money(subtotal);
+    $('est-tax').textContent = money(tax);
+    $('est-fee').textContent = money(fee);
+    $('est-grat').textContent = money(grat);
+    $('est-total').textContent = money(total);
+    $('est-pp').textContent = '$' + (total / g).toFixed(2) + ' per guest'
+      + (bevIsPackage ? '' : ', before bar spend');
+  }
+
+  function setHours(n) {
+    barHours = n;
+    h2.setAttribute('aria-pressed', String(n === 2));
+    h3.setAttribute('aria-pressed', String(n === 3));
+    recalc();
+  }
+
+  [guests, food, dessert, bev].forEach(function (el) {
+    el.addEventListener('input', recalc);
+    el.addEventListener('change', recalc);
+  });
+  h2.addEventListener('click', function () { setHours(2); });
+  h3.addEventListener('click', function () { setHours(3); });
+  recalc();
+
+  /* Menu cards jump to the estimator with that tier selected. */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-menu]'), function (a) {
+    a.addEventListener('click', function () {
+      food.value = a.getAttribute('data-menu');
+      recalc();
     });
-    var notes = mount.querySelector('textarea[name*="additional"], textarea[name*="description"]');
-    if (notes) {
-      notes.addEventListener('blur', function () {
-        if (notes.dataset.tagged) return;
-        var tag = '\n\n[src: ' + (attr.utm_source || attr.referrer || 'direct')
-                + (attr.utm_campaign ? ' / ' + attr.utm_campaign : '') + ']';
-        notes.value = (notes.value || '') + tag;
-        notes.dataset.tagged = '1';
-      });
+  });
+
+  /* ─────────── 2. Carry the estimate into the form ─────────── */
+  var FOOD_LABEL = { 40:"Augustus' Cena — $40 pp", 55:"Caesar's Cena — $55 pp",
+                     75:"Nero's Cena — $75 pp", 110:"Sabina's Cena — $110 pp" };
+  var BEV_LABEL  = { 35:"The Plebian's — limited bar", 60:"The Gladiator's — full bar, call brands",
+                     85:"The Emperor's — full bar, premium" };
+
+  function setSelect(el, text) {
+    if (!el) return;
+    for (var i = 0; i < el.options.length; i++) {
+      if (el.options[i].text === text) { el.selectedIndex = i; return; }
     }
   }
-
-  /* Watch for the embed to render; fall back to phone/email if it never does.
-     A form that silently fails to load is a lead we paid for and lost. */
-  var settled = false;
-  function settle() {
-    if (settled) return false;
-    if (!mount.querySelector('input, select, textarea')) return false;
-    settled = true;
-    if (loader) loader.style.display = 'none';
-    enrichForm();
-    if (window.fbq) fbq('trackCustom', 'LeadFormViewed');
-    return true;
+  function setRadio(name, value) {
+    var r = document.querySelector('[name="' + name + '"][value="' + value + '"]');
+    if (r) r.checked = true;
   }
 
-  if (!settle()) {
-    var observer = new MutationObserver(function () { if (settle()) observer.disconnect(); });
-    observer.observe(mount, { childList: true, subtree: true });
-    setTimeout(function () {
-      if (settled) return;
-      observer.disconnect();
-      if (loader) loader.style.display = 'none';
-      document.getElementById('ts-fallback').style.display = 'block';
-      if (window.fbq) fbq('trackCustom', 'LeadFormFailedToLoad');
-    }, 8000);
+  $('est-send').addEventListener('click', function () {
+    var f = parseInt(food.value, 10);
+    var g = parseInt(guests.value, 10) || 0;
+
+    $('guest_count').value = g;
+    setSelect($('food_package'), FOOD_LABEL[f]);
+    setSelect($('food_style'), 'Yes — a banquet package');
+    var dChk = document.querySelector('[name="dessert"]');
+    if (dChk) dChk.checked = dessert.checked && DESSERT[f] > 0;
+
+    if (bev.value === 'tab') {
+      setSelect($('bev_style'), 'Host tab');
+    } else {
+      setSelect($('bev_style'), 'A beverage package');
+      setSelect($('bev_package'), BEV_LABEL[bev.value]);
+      setRadio('bev_hours', barHours + ' hours');
+    }
+
+    /* Show what got carried, so the jump to the form isn't a mystery. */
+    var box = $('est-carry');
+    box.textContent = 'Carried over from your estimate: ' + g + ' guests · '
+      + FOOD_LABEL[f].split(' — ')[0] + (dChk && dChk.checked ? ' + dessert' : '')
+      + ' · ' + (bev.value === 'tab' ? 'host tab' : BEV_LABEL[bev.value].split(' — ')[0] + ', ' + barHours + ' hrs')
+      + ' · approx. ' + $('est-total').textContent + ' all in.';
+    box.style.display = 'block';
+
+    window.NERO_ESTIMATE = $('est-total').textContent;
+    $('more-fields').classList.add('open');
+    $('more-toggle').setAttribute('aria-expanded', 'true');
+    $('more-toggle').style.display = 'none';
+
+    if (window.gtag) gtag('event', 'estimator_to_form');
+    if (window.fbq) fbq('trackCustom', 'EstimatorUsed');
+  });
+
+  /* ─────────── 3. Optional-details disclosure ─────────── */
+  $('more-toggle').addEventListener('click', function () {
+    var open = $('more-fields').classList.toggle('open');
+    this.setAttribute('aria-expanded', String(open));
+    this.textContent = open ? '− Hide the optional details' : '+ Add details so we can price it precisely';
+    if (open && window.gtag) gtag('event', 'form_details_expanded');
+  });
+
+  /* ─────────── 4. Submit ─────────── */
+  /* ⚑ PLACEHOLDER: paste the Google Apps Script web app URL (or an n8n
+     webhook URL) here. Setup instructions: LEAD-CAPTURE-SETUP.md        */
+  var ENDPOINT = 'LEAD_ENDPOINT_URL';
+  var NOTIFY_EMAIL = 'events@nerowashdc.com';   /* ⚑ PLACEHOLDER: fallback mailto address */
+
+  var form = $('lead-form');
+  var submitBtn = $('form-submit');
+  var status = $('form-status');
+  var attr = window.NERO_ATTR || {};
+  var loadedAt = Date.now();
+
+  function fieldWrap(el) {
+    var n = el;
+    while (n && !(n.classList && n.classList.contains('fld'))) n = n.parentNode;
+    return n;
   }
 
-  /* Scroll depth, so we can tell a bounce from a read. */
+  function validate() {
+    var ok = true, firstBad = null;
+    ['first_name','last_name','email','phone','event_date','guest_count','event_type'].forEach(function (id) {
+      var el = $(id), wrap = fieldWrap(el), good = !!el.value.trim();
+      if (id === 'email' && good) good = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(el.value.trim());
+      if (id === 'guest_count' && good) good = parseInt(el.value, 10) > 0;
+      el.classList.toggle('invalid', !good);
+      if (wrap) wrap.classList.toggle('bad', !good);
+      if (!good) { ok = false; firstBad = firstBad || el; }
+    });
+    var aud = document.querySelector('[name="audience"]:checked');
+    var audWrap = fieldWrap(document.querySelector('[name="audience"]'));
+    if (audWrap) audWrap.classList.toggle('bad', !aud);
+    if (!aud) { ok = false; firstBad = firstBad || document.querySelector('[name="audience"]'); }
+    if (firstBad) firstBad.focus({ preventScroll: false });
+    return ok;
+  }
+
+  function collect() {
+    var data = {};
+    var fd = new FormData(form);
+    fd.forEach(function (v, k) {
+      if (!String(v).trim()) return;
+      if (data[k]) data[k] = data[k] + ', ' + v;   /* checkboxes sharing a name */
+      else data[k] = v;
+    });
+    Object.keys(attr).forEach(function (k) { data[k] = attr[k]; });
+    if (window.NERO_ESTIMATE) data.estimate_shown = window.NERO_ESTIMATE;
+    data.page = window.location.href;
+    data.submitted_at = new Date().toISOString();
+    return data;
+  }
+
+  /* If the endpoint is unreachable we do NOT swallow the inquiry — we hand
+     the visitor a prefilled email instead. A lost lead is the one failure
+     mode this page cannot have. */
+  function mailtoFallback(data) {
+    var body = Object.keys(data)
+      .filter(function (k) { return ['company_url','page','submitted_at'].indexOf(k) === -1; })
+      .map(function (k) { return k.replace(/_/g, ' ') + ': ' + data[k]; })
+      .join('\n');
+    return 'mailto:' + NOTIFY_EMAIL
+      + '?subject=' + encodeURIComponent('Private Event Inquiry — ' + (data.first_name || '') + ' ' + (data.last_name || ''))
+      + '&body=' + encodeURIComponent(body);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = '';
+    status.style.display = 'none';
+
+    /* Honeypot only. A filled hidden field means a bot — show it success
+       so it doesn't retry, and send nothing.
+
+       Deliberately NOT blocking on time-to-submit: a fast submit is a weak
+       spam signal and a real one loses the lead silently, which is the one
+       failure this page can't have. We flag it and let the backend decide. */
+    if ($('company_url').value) {
+      window.location = '/thank-you';
+      return;
+    }
+    if (!validate()) return;
+
+    var data = collect();
+    data.fill_seconds = Math.round((Date.now() - loadedAt) / 1000);
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    /* text/plain keeps this a "simple" CORS request — no preflight, which
+       Apps Script web apps do not answer. */
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data)
+    })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(function () {
+        /* Carry only the campaign params to the thank-you page — they feed
+           the conversion events. Internal bookkeeping stays out of the URL. */
+        var pass = {};
+        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid'].forEach(function (k) {
+          if (attr[k]) pass[k] = attr[k];
+        });
+        var qs = new URLSearchParams(pass).toString();
+        window.location = '/thank-you' + (qs ? '?' + qs : '');
+      })
+      .catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request My Proposal';
+        status.className = 'err';
+        status.innerHTML = 'We couldn\'t send that automatically. Nothing is lost — '
+          + '<a href="' + mailtoFallback(data) + '">click here to email it to us</a> '
+          + 'with your answers already filled in, or call <a href="tel:+12029646201">202-964-6201</a>.';
+        if (window.fbq) fbq('trackCustom', 'LeadFormError');
+        if (window.gtag) gtag('event', 'lead_form_error');
+      });
+  });
+
+  /* ─────────── 5. Scroll depth ─────────── */
   var fired = {};
   window.addEventListener('scroll', function () {
     var h = document.body.scrollHeight || 1;
