@@ -20,10 +20,22 @@
 
 var CONFIG = {
   // Who gets the instant email. Comma-separate for several people.
-  NOTIFY: 'events@nerowashdc.com',
+  // Matías is the primary contact; Mike is copied to watch lead flow.
+  NOTIFY: 'matias@nerowashdc.com, mike@dineline.co',
+
+  // Sender display name. Gmail always sends from whichever account owns
+  // this script — you can't change the address — but you can change what
+  // the recipient sees. Worth setting when the owning account isn't the
+  // client's, so the events team sees "Nero Private Events" in their
+  // inbox rather than an agency name they have to decode at 9am.
+  FROM_NAME: 'Nero Private Events',
 
   // Optional. Leave '' to skip. Sends a copy to a Slack channel.
   SLACK_WEBHOOK: '',
+
+  // The leads spreadsheet — "Nero Private Events Inquiries | Dineline".
+  // Taken from its URL: docs.google.com/spreadsheets/d/<THIS BIT>/edit
+  SHEET_ID: '1Q-Lu6HXq--pIAoHnQTxVj4z67ALTtjN8lIXJyhiiFts',
 
   // Tab name inside the spreadsheet. Created automatically.
   SHEET_NAME: 'Leads',
@@ -56,6 +68,10 @@ function doPost(e) {
     lock.waitLock(20000);
 
     var data = JSON.parse(e.postData.contents);
+
+    // Stamp server-side if the browser didn't send one. A lead row with no
+    // timestamp is close to useless for reporting.
+    if (!data.submitted_at) data.submitted_at = new Date().toISOString();
 
     // Honeypot — a filled hidden field means a bot. Accept and discard,
     // so the bot sees success and doesn't retry.
@@ -101,7 +117,13 @@ function doGet() {
 // ═══════════════════ HELPERS ═══════════════════
 
 function getSheet() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  // Works whether this script is bound to the sheet (Extensions → Apps Script)
+  // or is a standalone project — openById covers both, getActiveSpreadsheet
+  // only covers the bound case.
+  var ss = CONFIG.SHEET_ID
+    ? SpreadsheetApp.openById(CONFIG.SHEET_ID)
+    : SpreadsheetApp.getActiveSpreadsheet();
+  if (!ss) throw new Error('No spreadsheet. Set CONFIG.SHEET_ID.');
   var sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
   if (!sheet) {
     sheet = ss.insertSheet(CONFIG.SHEET_NAME);
@@ -163,7 +185,8 @@ function notify(d) {
 
   MailApp.sendEmail({
     to: CONFIG.NOTIFY,
-    replyTo: d.email || undefined,
+    name: CONFIG.FROM_NAME || undefined,
+    replyTo: d.email || undefined,   // Reply goes to the planner, not to us
     subject: subject,
     body: body
   });

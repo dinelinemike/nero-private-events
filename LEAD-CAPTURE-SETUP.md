@@ -31,20 +31,26 @@ If step 2 fails for any reason, the visitor gets an error with a **prefilled mai
 
 ## Setup
 
-### 1. Create the Sheet
+### 1. The Sheet — already created
 
-New Google Sheet named `Nero — Private Event Leads`. Owned by whichever account should hold this long term — moving it later means re-deploying.
+**Nero Private Events Inquiries | Dineline**
+`https://docs.google.com/spreadsheets/d/1Q-Lu6HXq--pIAoHnQTxVj4z67ALTtjN8lIXJyhiiFts/edit`
+
+Owned by `mike@dineline.co`, in the Dineline shared drive. This is arrangement **B** below — Dineline owns it, the client's team gets the notifications.
+
+The script writes to a tab called `Leads` and creates it on first run. Delete the empty default `Sheet1` afterwards so nobody types into the wrong tab.
 
 ### 2. Add the script
 
-Extensions → Apps Script. Delete the placeholder, paste the contents of `apps-script/Code.gs`, save.
+Open the sheet → Extensions → Apps Script. Delete the placeholder, paste the contents of `apps-script/Code.gs`, save.
 
-Edit the `CONFIG` block at the top:
+`CONFIG` is already filled in for this account — no edits needed unless you want to change who's notified:
 
 ```js
 var CONFIG = {
-  NOTIFY: 'events@nerowashdc.com',   // who gets the instant email
-  SLACK_WEBHOOK: '',                  // optional
+  NOTIFY: 'matias@nerowashdc.com, mike@dineline.co',
+  FROM_NAME: 'Nero Private Events',
+  SLACK_WEBHOOK: '',
   SHEET_NAME: 'Leads',
   ALLOWED_HOST: 'privateevents.nerowashdc.com'
 };
@@ -100,7 +106,29 @@ Saving the script does *not* update the live URL. This catches everyone at least
 
 Import it, set the Google Sheets and SMTP credentials, activate, and paste the production webhook URL into `ENDPOINT` instead. The page doesn't care which it's talking to; the payload is identical.
 
-**Which to pick:** Apps Script keeps the client's leads inside the client's own Google account with no Dineline dependency — if we ever hand the account off, nothing breaks. n8n gives better observability and easier routing if you want Slack alerts, HubSpot sync, or conditional logic later. Apps Script is the safer default for a client-owned lead flow; n8n is the better choice if you want this feeding other Dineline systems.
+**Which to pick:** Apps Script keeps the leads inside a Google account with no extra dependency. n8n gives better observability and easier routing if you want Slack alerts, HubSpot sync, or conditional logic later. Apps Script is the safer default; n8n is better if this needs to feed other Dineline systems.
+
+---
+
+## Who should own the sheet
+
+Three workable arrangements. The script always **sends from whichever Google account owns it** — that part can't be changed, only the display name can.
+
+| | Owner | Emails come from | Trade-off |
+|---|---|---|---|
+| **A** | Client's Google account | Their own domain | Cleanest. Needs Matías to sit down for 10 minutes and click through Google's authorization. |
+| **B** | Dineline account, client shared in + notified | Dineline's address, displayed as "Nero Private Events" | Set up today with no client dependency. Emails originate off-domain — see spam note below. |
+| **C** | Dineline, migrate to client later | Changes on migration | Migration means a **redeploy and a new endpoint URL**, so a code change. Fine, just not free. |
+
+**If you go with B** — Dineline owns it, client's team gets the pings:
+
+1. Set `NOTIFY` to the client's addresses (comma-separated for several).
+2. Set `FROM_NAME` to `Nero Private Events` so their inbox shows something they recognize.
+3. **Tell the recipients to check spam on day one and mark it "not spam."** Mail arriving from an outside domain about their own business is exactly what filters flag. This is the one thing that quietly breaks a setup like this — the sheet fills up, nobody sees an email, and it looks like the page isn't working.
+4. Share the Sheet with them as **Editor** so they can add a `Status` column and work the leads. Tell them: never insert or reorder columns — the script writes by position, so a new column in the middle silently corrupts every row after it. New columns go on the far right only.
+5. Add your own address to `NOTIFY` too. You want to see lead flow without asking.
+
+Reply-to is set to the guest's address in all three arrangements, so whoever hits Reply is writing to the planner — not to Dineline, and not into a void.
 
 ---
 
