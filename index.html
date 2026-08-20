@@ -31,15 +31,36 @@
 <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=4732017186828350&ev=PageView&noscript=1" /></noscript>
 
-<!-- ⚑ PLACEHOLDER: swap G-XXXXXXXXXX for Nero's GA4 measurement ID, and AW-XXXXXXXXX for the Google Ads conversion account. -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- ═══════════════════════════════════════════════════════════════
+     GA4 — hardcoded so it works without anyone touching GTM.
+     ⚠ DO NOT also add a GA4 configuration tag for G-GNNS3Y1S6N inside
+     GTM. It would double-count every pageview and every lead.
+     ═══════════════════════════════════════════════════════════════ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNS3Y1S6N"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-  gtag('config', 'AW-XXXXXXXXX');
+  gtag('config', 'G-GNNS3Y1S6N');
 </script>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     GOOGLE TAG MANAGER — container is currently empty, so this fires
+     nothing today. It's here as the extension point: the Google Ads
+     conversion, and anything else added later, can be built in GTM
+     without a code change or a redeploy.
+
+     The page pushes named events to the dataLayer for GTM to trigger on:
+       nero_lead              — a real submitted inquiry (thank-you page)
+       estimator_to_form      — used the cost estimator, high intent
+       form_details_expanded  — opened the optional questionnaire
+       lead_form_error        — submission failed
+     ═══════════════════════════════════════════════════════════════ -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TB95TTBZ');</script>
 
 <!-- ═══════════════════════════════════════════════════════════════
      ATTRIBUTION CAPTURE
@@ -369,6 +390,10 @@ footer a:hover{color:var(--gold)}
 </head>
 
 <body>
+
+<!-- GTM fallback for JS-disabled browsers -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB95TTBZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="topbar">
 <!-- ⚑ PLACEHOLDER: seasonal urgency line. Swap or delete as the season turns. -->
@@ -829,8 +854,7 @@ footer a:hover{color:var(--gold)}
       <div class="direct">
         <b>Rather just call?</b>
         <a href="tel:+12029646201">202-964-6201</a><br />
-        <!-- ⚑ PLACEHOLDER: swap for the named events contact's direct email once confirmed. -->
-        <a class="ph" href="mailto:events@nerowashdc.com">events@nerowashdc.com</a><br />
+        <a href="mailto:matias@nerowashdc.com">matias@nerowashdc.com</a><br />
         <span style="color:var(--muted);font-size:.85rem">1207 19th St NW, Washington, DC 20036</span>
       </div>
     </div>
@@ -1117,6 +1141,16 @@ footer a:hover{color:var(--gold)}
 (function () {
   'use strict';
 
+  /* GA4 gets these via gtag; GTM needs the {event:'name'} shape to
+     trigger on, so fire both. Cheap, and it means tags can be built in
+     GTM later without touching this file. */
+  function track(name, params) {
+    if (window.gtag) gtag('event', name, params || {});
+    (window.dataLayer = window.dataLayer || []).push(
+      Object.assign({ event: name }, params || {})
+    );
+  }
+
   /* ─────────── 1. Cost estimator ─────────── */
   var TAX = 0.10, FEE = 0.05, GRAT = 0.18;
   var DESSERT = { 40:7, 55:5, 75:3, 110:0 };
@@ -1251,7 +1285,7 @@ footer a:hover{color:var(--gold)}
     $('more-toggle').setAttribute('aria-expanded', 'true');
     $('more-toggle').style.display = 'none';
 
-    if (window.gtag) gtag('event', 'estimator_to_form');
+    track('estimator_to_form');
     if (window.fbq) fbq('trackCustom', 'EstimatorUsed');
   });
 
@@ -1260,14 +1294,15 @@ footer a:hover{color:var(--gold)}
     var open = $('more-fields').classList.toggle('open');
     this.setAttribute('aria-expanded', String(open));
     this.textContent = open ? '− Hide the optional details' : '+ Add details so we can price it precisely';
-    if (open && window.gtag) gtag('event', 'form_details_expanded');
+    if (open) track('form_details_expanded');
   });
 
   /* ─────────── 4. Submit ─────────── */
-  /* ⚑ PLACEHOLDER: paste the Google Apps Script web app URL (or an n8n
-     webhook URL) here. Setup instructions: LEAD-CAPTURE-SETUP.md        */
-  var ENDPOINT = 'LEAD_ENDPOINT_URL';
-  var NOTIFY_EMAIL = 'events@nerowashdc.com';   /* ⚑ PLACEHOLDER: fallback mailto address */
+  /* Google Apps Script web app — writes to "Nero Private Events Inquiries |
+     Dineline" and emails the events team. See LEAD-CAPTURE-SETUP.md.
+     If this is ever redeployed the URL changes and must be updated here. */
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbz4UhX4spLZCK8xD6Wyg38TVg4NTBpSIWKb8M8PdpnCrGDUmjit0d-_sQH8RsNVxCPcsg/exec';
+  var NOTIFY_EMAIL = 'matias@nerowashdc.com';   /* fallback mailto if the endpoint is down */
 
   var form = $('lead-form');
   var submitBtn = $('form-submit');
@@ -1375,7 +1410,7 @@ footer a:hover{color:var(--gold)}
           + '<a href="' + mailtoFallback(data) + '">click here to email it to us</a> '
           + 'with your answers already filled in, or call <a href="tel:+12029646201">202-964-6201</a>.';
         if (window.fbq) fbq('trackCustom', 'LeadFormError');
-        if (window.gtag) gtag('event', 'lead_form_error');
+        track('lead_form_error');
       });
   });
 
@@ -1387,7 +1422,7 @@ footer a:hover{color:var(--gold)}
     [50, 90].forEach(function (mark) {
       if (pct >= mark && !fired[mark]) {
         fired[mark] = true;
-        if (window.gtag) gtag('event', 'scroll_depth', { percent: mark });
+        track('scroll_depth', { percent: mark });
       }
     });
   }, { passive: true });

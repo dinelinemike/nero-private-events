@@ -27,30 +27,57 @@
 <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=4732017186828350&ev=Lead&noscript=1" /></noscript>
 
-<!-- ⚑ PLACEHOLDER: G-XXXXXXXXXX = GA4 measurement ID · AW-XXXXXXXXX/AbC_dEfGhIj = Google Ads conversion label -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- ═══════════════════════════════════════════════════════════════
+     GA4 — hardcoded. ⚠ Do NOT also configure G-GNNS3Y1S6N in GTM.
+     ═══════════════════════════════════════════════════════════════ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNS3Y1S6N"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-  gtag('config', 'AW-XXXXXXXXX');
+  gtag('config', 'G-GNNS3Y1S6N');
 
   var p = new URLSearchParams(window.location.search);
+  var src  = p.get('utm_source')   || 'direct';
+  var camp = p.get('utm_campaign') || '(none)';
 
+  /* GA4 key event. Mark generate_lead as a key event in GA4 admin. */
   gtag('event', 'generate_lead', {
     currency: 'USD',
     value: 1,
-    lead_source: p.get('utm_source') || 'direct',
-    campaign: p.get('utm_campaign') || '(none)'
+    lead_source: src,
+    campaign: camp
   });
 
-  gtag('event', 'conversion', {
-    send_to: 'AW-XXXXXXXXX/AbC_dEfGhIj',
-    value: 1.0,
-    currency: 'USD'
+  /* dataLayer event for GTM to hang the Google Ads conversion off.
+     Build it in GTM: Trigger = Custom Event, name `nero_lead`.
+     No code change needed when the Ads label finally arrives. */
+  window.dataLayer.push({
+    event: 'nero_lead',
+    lead_source: src,
+    lead_campaign: camp,
+    gclid: p.get('gclid') || ''
   });
+
+  /* ── Alternative to doing it in GTM ─────────────────────────────
+     If you'd rather hardcode the Google Ads conversion, uncomment
+     this and drop in the real AW- ID and label:
+
+     gtag('config', 'AW-XXXXXXXXX');
+     gtag('event', 'conversion', {
+       send_to: 'AW-XXXXXXXXX/YourConversionLabel',
+       value: 1.0,
+       currency: 'USD'
+     });
+     ──────────────────────────────────────────────────────────── */
 </script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TB95TTBZ');</script>
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -93,6 +120,9 @@ h1 em{font-style:italic;color:var(--gold-light)}
 </head>
 
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB95TTBZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 <div class="inner">
   <div class="logo">
     <img src="img/logo-nero.png" alt="Nero" />
