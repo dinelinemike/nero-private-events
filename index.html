@@ -302,6 +302,26 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:24px;paddi
   background:linear-gradient(to top,rgba(10,10,10,.9),transparent);color:var(--white)}
 @media(max-width:860px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:145px}}
 
+/* ── RATINGS ── */
+.rating-band{display:grid;grid-template-columns:auto 1fr;gap:52px;align-items:center;
+  background:var(--card);border:1px solid var(--border-gold);border-radius:6px;padding:44px 48px}
+@media(max-width:860px){.rating-band{grid-template-columns:1fr;gap:32px;padding:32px 26px;text-align:center}}
+.rating-score{text-align:center;padding-right:52px;border-right:1px solid var(--border)}
+@media(max-width:860px){.rating-score{padding-right:0;border-right:none;border-bottom:1px solid var(--border);padding-bottom:26px}}
+.rating-num{font-family:var(--font-display);font-size:4.4rem;line-height:1;color:var(--gold-light)}
+.rating-stars{color:var(--gold);font-size:1.15rem;letter-spacing:.14em;margin-top:10px}
+.rating-stars .half{opacity:.42}
+.rating-count{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:12px;white-space:nowrap}
+.rating-body h2{font-size:clamp(1.7rem,3.2vw,2.3rem)}
+.rating-topics{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+@media(max-width:860px){.rating-topics{justify-content:center}}
+.rating-topics li{background:var(--gold-dim);border:1px solid var(--border-gold);border-radius:100px;
+  padding:8px 16px;font-size:.85rem;color:var(--muted-hi)}
+.rating-topics b{color:var(--gold-light);font-weight:400;font-family:var(--font-display);font-size:1.02rem}
+.rating-link{display:inline-block;margin-top:26px;color:var(--gold);text-decoration:none;font-size:.8rem;
+  font-weight:700;letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid var(--border-gold);padding-bottom:3px}
+.rating-link:hover{color:var(--gold-light)}
+
 /* ── QUOTE ── */
 .quote{text-align:center;max-width:76ch;margin:0 auto}
 .quote blockquote{font-family:var(--font-display);font-size:clamp(1.25rem,2.5vw,1.8rem);line-height:1.45;font-style:italic}
@@ -842,12 +862,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ══════════ TESTIMONIAL ══════════ -->
-<section style="padding-top:0">
-  <div class="wrap quote">
-    <!-- ⚑ PLACEHOLDER: needs one real quote from a past booker. Ask the client for permission + name/title/company. -->
-    <blockquote class="ph">"I sent the same email to six venues in Dupont. Nero came back the same hour with an actual price. That decided it before we ever walked in."</blockquote>
-    <cite class="ph">Placeholder — pending a real client quote</cite>
+<!-- ══════════ RATINGS ══════════
+     Verifiable social proof rather than an invented quote. Figures and
+     topic counts are Google's own, read from the Maps listing on
+     Sep 2, 2026. They drift — re-check quarterly and update the four
+     numbers below plus data-checked. See README "Ratings block".
+     ══════════════════════════════════════════════════════════════ -->
+<section id="ratings" data-checked="2026-09-02" style="padding-top:0">
+  <div class="wrap">
+    <div class="rating-band">
+      <div class="rating-score">
+        <div class="rating-num">4.6</div>
+        <div class="rating-stars" aria-hidden="true">★★★★<span class="half">★</span></div>
+        <div class="rating-count">398 Google reviews</div>
+      </div>
+
+      <div class="rating-body">
+        <div class="eyebrow">What guests actually say</div>
+        <h2>We didn't write this part.</h2>
+        <p class="lede">Nearly four hundred people have reviewed Nero on Google, and the things they bring up most are the things that make an event here worth booking. These are Google's own counts, not ours.</p>
+        <ul class="rating-topics">
+          <li><b>48</b> mention the speakeasy</li>
+          <li><b>12</b> mention happy hour</li>
+          <li><b>11</b> mention the wine bar</li>
+        </ul>
+        <a class="rating-link" href="https://maps.google.com/?cid=7878215544412519366" target="_blank" rel="noopener">Read the reviews on Google →</a>
+      </div>
+    </div>
   </div>
 </section>
 
