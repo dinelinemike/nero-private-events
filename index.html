@@ -458,11 +458,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="space-body">
           <div class="space-head"><h3>Sabina</h3><div class="cap">~50 standing</div></div>
           <div class="best">Private dinners · Milestone birthdays · Intimate parties</div>
-          <p>The darker, more intimate room downstairs. Low light, a cocktail-forward bar and the kind of atmosphere people remember. Most flexible midweek, and available on Sundays for private events even though we're not otherwise open.</p>
+          <p>The darker, more intimate room downstairs. Low light, a cocktail-forward bar and the kind of atmosphere people remember. Most flexible — and best value — midweek.</p>
           <ul>
             <li>Intimate, low-lit setting</li>
             <li>Best midweek value</li>
-            <li>Sundays available by request</li>
+            <li>Sundays possible for larger events</li>
           </ul>
         </div>
       </div>
@@ -505,7 +505,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap">
     <div class="eyebrow">Food Packages</div>
     <h2>Four family-style menus. Published prices.</h2>
-    <p class="lede">Every menu is served family style — the table shares everything, so your guests get to taste it all. Available seven days a week, with salad options on request and assorted sodas included.</p>
+    <p class="lede">Every menu is served family style — the table shares everything, so your guests get to taste it all. Available any day of the week, with salad options on request and assorted sodas included.</p>
 
     <div class="menu-grid">
       <div class="menu">
@@ -607,7 +607,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="kind">Full bar · Call brands</div>
         <ul>
           <li>1 cocktail of your choice</li>
-          <li>Tito's, Milagro, Tanqueray, Bacardi, Maker's Mark, Bulleit</li>
+          <li>Call-brand liquors including Tito's, Tanqueray, Bacardi, Maker's Mark and Bulleit</li>
           <li>2 premium reds, 2 premium whites</li>
           <li>1 rosé, prosecco, 4 brews</li>
         </ul>
@@ -675,6 +675,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <option value="55">Caesar's Cena — $55 pp</option>
             <option value="75" selected>Nero's Cena — $75 pp</option>
             <option value="110">Sabina's Cena — $110 pp</option>
+            <option value="platters">Platters or à la carte</option>
+            <option value="none">No food — bar only</option>
           </select>
         </div>
 
@@ -705,6 +707,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="est-out">
+        <!-- Shown when no food or bar package is selected — those events run
+             on a minimum spend rather than a per-head price. -->
+        <div id="est-minimum" style="display:none">
+          <div class="eyebrow" style="margin-bottom:14px">Without a package</div>
+          <h3 style="font-size:1.35rem;margin-bottom:14px">We'll work to a minimum spend.</h3>
+          <p style="color:var(--muted-hi);font-size:.94rem">Plenty of events here run on individual tabs and whatever the kitchen sends out — no package at all. Those aren't priced per head. Instead we set a minimum spend based on four things: which room, which day, what time, and how many people.</p>
+          <p style="color:var(--muted-hi);font-size:.94rem;margin-top:12px">Tell us those four and we'll come back with the number, usually within the hour.</p>
+        </div>
+
+        <div id="est-figures">
         <div class="est-line sub"><span id="est-food-label">Food, 40 guests</span><span id="est-food-total">$3,000</span></div>
         <div class="est-line sub" id="est-bev-row"><span id="est-bev-label">Beverage</span><span id="est-bev-total">On consumption</span></div>
         <div class="est-line sub"><span>Subtotal</span><span id="est-subtotal">$3,000</span></div>
@@ -713,8 +725,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="est-line fee"><span>Gratuity, 18%</span><span id="est-grat">$540</span></div>
         <div class="est-total"><span>Estimated all in</span><span id="est-total">$3,990</span></div>
         <div class="est-pp" id="est-pp">$99.75 per guest</div>
+        </div>
         <a class="btn est-cta" href="#inquire" id="est-send">Send This to the Events Team</a>
-        <p class="est-fine">An estimate, not a quote. Your final number depends on the room, the day, the time and what you want the night to be — a Saturday buyout prices differently from a Tuesday dinner in Sabina. Bar spend on a tab or consumption basis isn't included above. All menu prices are exclusive of 10% DC sales tax, 5% event fee and 18% gratuity.</p>
+        <p class="est-fine" id="est-fine">An estimate, not a quote. Your final number depends on the room, the day, the time and what you want the night to be — a Saturday buyout prices differently from a Tuesday dinner in Sabina. Bar spend on a tab or consumption basis isn't included above. All menu prices are exclusive of 10% DC sales tax, 5% event fee and 18% gratuity.</p>
       </div>
     </div>
   </div>
@@ -729,9 +742,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="hpw-grid">
       <div><b>The room</b><p>Sabina on a Saturday is not Sabina on a Tuesday. The wine bar prices differently from a full buyout.</p></div>
-      <div><b>Day and time</b><p>Weeknights and Sundays are our most flexible. Saturday nights in December are our least.</p></div>
+      <div><b>Day and time</b><p>Weeknights are our most flexible. Saturday nights in December are our least, and Sundays carry a premium — we open specially and bring in a full team.</p></div>
       <div><b>Guest count</b><p>Minimums move with the room and the date. Larger groups often unlock better per-head economics.</p></div>
       <div><b>What you need</b><p>Seated dinner versus a standing reception, a DJ, projection, a mixed platter format — each shapes staffing and setup.</p></div>
+      <div><b>How long it runs</b><p>Parties often go past the time they booked, which is welcome — it just adds to the final bill. Better said now than discovered later.</p></div>
     </div>
 
     <div class="menu-note" style="margin-top:22px">
@@ -741,7 +755,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div>
         <b>What you'll get back</b>
-        A written proposal with the room, the menu, the bar approach and one final number — usually within the hour.
+        A reply within the hour confirming your date, then a written proposal the same day — the room, the menu, the bar approach and one final number.
       </div>
     </div>
   </div>
@@ -760,8 +774,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="feat-item"><b>Outside vendors welcome</b><p>Florists, photographers, decorators, DJs — bring the people you want. Setup usually starts 30 minutes before doors.</p></div>
       <div class="feat-item"><b>Flexible layouts</b><p>Seated dinner, standing reception, presentation rows, or a mix as the night moves. Furniture is not fixed.</p></div>
       <div class="feat-item"><b>The wine machine</b><p>A self-dispensing wall of 24 rare wines in 2, 3 and 5 oz pours. It becomes the thing guests talk about.</p></div>
-      <div class="feat-item"><b>Getting here</b><p>1207 19th St NW. Street parking plus a garage less than a block away. Dupont Circle and Farragut West both walkable.</p></div>
-      <div class="feat-item"><b>Seven days a week</b><p>Every banquet menu is available any day — including Sundays in Sabina, when we're not otherwise open.</p></div>
+      <div class="feat-item"><b>Getting here</b><p>1207 19th St NW. A parking garage less than a block away, plus street parking if you're lucky. Dupont Circle and Farragut West both walkable.</p></div>
+      <div class="feat-item"><b>Any day of the week</b><p>Every banquet menu is available any day. Sundays we're normally closed, so we open specially and staff the kitchen and bar for you — which suits larger events and is priced accordingly.</p></div>
     </div>
   </div>
 </section>
@@ -777,7 +791,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="bor-item">
         <div class="n">01</div>
         <h3>A reply within the hour.</h3>
-        <p>Not two days. Inquiries that land during business hours get a real, priced response the same hour — and overnight requests are answered first thing.</p>
+        <p>Not two days. Inquiries that land during business hours get a real reply from a real person the same hour, with your date confirmed and any questions we need answered. The full priced proposal follows the same day.</p>
       </div>
       <div class="bor-item">
         <div class="n">02</div>
@@ -807,7 +821,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="steps">
       <div class="step"><b>Step 01</b><h3>Send the details</h3><p>Date, headcount, and roughly what you're picturing. If you don't know the room yet, say so — we'll recommend one.</p></div>
       <div class="step"><b>Step 02</b><h3>Hear back within the hour</h3><p>A real person, not an autoresponder, with availability and the questions that actually change your quote.</p></div>
-      <div class="step"><b>Step 03</b><h3>Get a customized quote</h3><p>Room, menu, bar approach and one all-in number. We hold your date while you decide.</p></div>
+      <div class="step"><b>Step 03</b><h3>Get a customized quote</h3><p>Room, menu, bar approach and one all-in number, back with you the same day. We hold your date while you decide.</p></div>
       <div class="step"><b>Step 04</b><h3>Lock the details</h3><p>Menu selections, layout, vendors, timing. Then you show up and we run it.</p></div>
     </div>
   </div>
@@ -845,7 +859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2>Tell us the date. We'll send the number.</h2>
       <p class="lede">Two minutes to fill out, and a real reply within the hour during business hours.</p>
       <ul>
-        <li>A priced proposal, not a callback request</li>
+        <li>A real reply, not an autoresponder</li>
         <li>Your date held while you decide</li>
         <li>One named contact from here on</li>
         <li>Not sure which room? We'll recommend one</li>
@@ -961,7 +975,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="row2">
               <div class="fld"><label for="start_time">Start time</label><input type="time" id="start_time" name="start_time" /></div>
-              <div class="fld"><label for="end_time">End time</label><input type="time" id="end_time" name="end_time" /></div>
+              <div class="fld">
+                <label for="end_time">End time</label>
+                <input type="time" id="end_time" name="end_time" />
+                <div style="font-size:.78rem;color:var(--muted);margin-top:6px">Not sure yet? Leave it blank.</div>
+              </div>
             </div>
             <div class="fld">
               <label for="space">Preferred space</label>
@@ -1161,6 +1179,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var guests = $('est-guests'), food = $('est-food'), dessert = $('est-dessert'),
       bev = $('est-bev'), hoursWrap = $('est-hours-wrap'), h2 = $('est-h2'), h3 = $('est-h3');
   var barHours = 2;
+  var FINE_DEFAULT = $('est-fine').textContent;   /* captured before any swap */
 
   function money(n) {
     return '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
@@ -1168,10 +1187,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function recalc() {
     var g = Math.max(1, Math.min(400, parseInt(guests.value, 10) || 0));
-    var f = parseInt(food.value, 10);
-    var dAdd = DESSERT[f] || 0;
 
-    /* Dessert toggle: hide entirely for the tier that includes it. */
+    /* 'platters' and 'none' aren't priced per head — those events run on a
+       minimum spend set by room, day, time and headcount, so the estimator
+       stops pretending it can price them and says so instead. */
+    var hasPackage = food.value !== 'platters' && food.value !== 'none';
+    var f = hasPackage ? parseInt(food.value, 10) : 0;
+    var dAdd = hasPackage ? (DESSERT[f] || 0) : 0;
+
+    /* Dessert toggle: hidden for Sabina's (included) and when there's no package. */
     if (dAdd === 0) {
       $('est-dessert-wrap').style.display = 'none';
       dessert.checked = false;
@@ -1194,8 +1218,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var tax = subtotal * TAX, fee = subtotal * FEE, grat = subtotal * GRAT;
     var total = subtotal + tax + fee + grat;
 
-    $('est-food-label').textContent = 'Food, ' + g + ' guest' + (g === 1 ? '' : 's') + ' × $' + foodPP;
-    $('est-food-total').textContent = money(foodTotal);
+    /* ── No food package: swap the number for an honest explanation ── */
+    var noPackage = !hasPackage && !bevIsPackage;
+    $('est-minimum').style.display = noPackage ? 'block' : 'none';
+    $('est-figures').style.display = noPackage ? 'none' : 'block';
+    if (noPackage) {
+      $('est-send').textContent = 'Ask Us For The Number';
+      /* The default fine print refers to figures that aren't on screen in
+         this state, so swap it for the part that still applies. */
+      $('est-fine').textContent = 'Minimum spends vary by room, day, time and guest count. '
+        + 'All food and beverage is exclusive of 10% DC sales tax, 5% event fee and 18% gratuity.';
+      return;
+    }
+    $('est-send').textContent = 'Send This to the Events Team';
+    $('est-fine').textContent = FINE_DEFAULT;
+
+    if (hasPackage) {
+      $('est-food-label').textContent = 'Food, ' + g + ' guest' + (g === 1 ? '' : 's') + ' × $' + foodPP;
+      $('est-food-total').textContent = money(foodTotal);
+    } else {
+      $('est-food-label').textContent = food.value === 'none' ? 'Food' : 'Platters / à la carte';
+      $('est-food-total').textContent = food.value === 'none' ? 'None' : 'Quoted separately';
+    }
 
     if (bevIsPackage) {
       $('est-bev-label').textContent = BEV_NAME[bev.value] + ', ' + barHours + ' hrs × $' + bevPP;
@@ -1211,7 +1255,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     $('est-grat').textContent = money(grat);
     $('est-total').textContent = money(total);
     $('est-pp').textContent = '$' + (total / g).toFixed(2) + ' per guest'
-      + (bevIsPackage ? '' : ', before bar spend');
+      + (bevIsPackage ? '' : ', before bar spend')
+      + (hasPackage ? '' : ', food quoted separately');
   }
 
   function setHours(n) {
@@ -1255,14 +1300,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   $('est-send').addEventListener('click', function () {
-    var f = parseInt(food.value, 10);
+    var hasPackage = food.value !== 'platters' && food.value !== 'none';
+    var f = hasPackage ? parseInt(food.value, 10) : 0;
     var g = parseInt(guests.value, 10) || 0;
 
     $('guest_count').value = g;
-    setSelect($('food_package'), FOOD_LABEL[f]);
-    setSelect($('food_style'), 'Yes — a banquet package');
+
+    if (hasPackage) {
+      setSelect($('food_package'), FOOD_LABEL[f]);
+      setSelect($('food_style'), 'Yes — a banquet package');
+    } else {
+      setSelect($('food_style'), food.value === 'none'
+        ? 'No food'
+        : 'Yes — platters or something custom');
+    }
+
     var dChk = document.querySelector('[name="dessert"]');
-    if (dChk) dChk.checked = dessert.checked && DESSERT[f] > 0;
+    if (dChk) dChk.checked = hasPackage && dessert.checked && DESSERT[f] > 0;
 
     if (bev.value === 'tab') {
       setSelect($('bev_style'), 'Host tab');
@@ -1273,14 +1327,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     /* Show what got carried, so the jump to the form isn't a mystery. */
+    var foodLabel = hasPackage
+      ? FOOD_LABEL[f].split(' — ')[0]
+      : (food.value === 'none' ? 'no food' : 'platters / à la carte');
     var box = $('est-carry');
     box.textContent = 'Carried over from your estimate: ' + g + ' guests · '
-      + FOOD_LABEL[f].split(' — ')[0] + (dChk && dChk.checked ? ' + dessert' : '')
+      + foodLabel + (dChk && dChk.checked ? ' + dessert' : '')
       + ' · ' + (bev.value === 'tab' ? 'host tab' : BEV_LABEL[bev.value].split(' — ')[0] + ', ' + barHours + ' hrs')
-      + ' · approx. ' + $('est-total').textContent + ' all in.';
+      + (hasPackage || bev.value !== 'tab'
+          ? ' · approx. ' + $('est-total').textContent + ' all in.'
+          : ' · minimum spend to be quoted.');
     box.style.display = 'block';
 
-    window.NERO_ESTIMATE = $('est-total').textContent;
+    /* Don't pass a stale total to the events team when nothing was priced. */
+    window.NERO_ESTIMATE = (hasPackage || bev.value !== 'tab')
+      ? $('est-total').textContent
+      : 'No package — minimum spend to be quoted';
     $('more-fields').classList.add('open');
     $('more-toggle').setAttribute('aria-expanded', 'true');
     $('more-toggle').style.display = 'none';
