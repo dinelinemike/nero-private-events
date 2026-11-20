@@ -4,12 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Private Events &amp; Corporate Buyouts · Nero · Dupont Circle, Washington DC</title>
-<meta name="description" content="Corporate events, private dinners and full buyouts in Dupont Circle. Family-style banquet menus from $40 per person, published bar packages, and a reply within the hour. 1207 19th St NW, Washington DC." />
+<meta name="description" content="Corporate events, private dinners and full buyouts in Dupont Circle. Buffet banquet menus from $50 per person, published bar packages, and platters for every format. 1207 19th St NW, Washington DC." />
 <link rel="canonical" href="https://privateevents.nerowashdc.com/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Private Events &amp; Corporate Buyouts · Nero · Dupont Circle DC" />
-<meta property="og:description" content="Menus from $40 per person. Three spaces or the whole building, up to 180 guests. A reply within the hour." />
+<meta property="og:description" content="Menus from $50 per person. Three spaces or the whole building, up to 180 guests." />
 <meta property="og:url" content="https://privateevents.nerowashdc.com/" />
 <meta property="og:image" content="https://privateevents.nerowashdc.com/img/og-share.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -207,8 +207,25 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:24px;paddi
 .menu-note div b{display:block;color:var(--gold);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
 
 /* ── BAR ── */
-.bar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-@media(max-width:900px){.bar-grid{grid-template-columns:1fr}}
+.menu .dishes{font-size:.8rem;color:var(--muted-hi);margin-top:12px}
+.menu .dishes summary{cursor:pointer;color:var(--gold-light);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}
+.menu .dishes b{display:block;color:var(--muted);font-weight:400;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;margin:12px 0 4px}
+.menu .dishes ul{list-style:none;padding:0}
+.menu .dishes li{padding:2px 0}
+.platters{margin-top:40px;border:1px solid var(--border);border-radius:5px;padding:30px 28px}
+.platters h3{margin-bottom:20px}
+.plat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 40px}
+@media(max-width:900px){.plat-grid{grid-template-columns:1fr}}
+.plat-grid b{display:block;font-weight:400;color:var(--gold-light);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}
+.plat-grid ul{list-style:none;padding:0;margin-bottom:20px;font-size:.88rem;color:var(--muted-hi)}
+.plat-grid li{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid var(--border)}
+.plat-grid li small{color:var(--muted);font-size:.72rem;margin-left:6px}
+.plat-grid li span:last-child{font-family:var(--font-display);color:var(--gold-light);white-space:nowrap}
+.plat-add{font-size:.78rem;color:var(--muted);margin:-10px 0 20px}
+.bar-note{font-size:.82rem;color:var(--muted);margin-top:14px;text-align:center}
+.bar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+@media(max-width:1000px){.bar-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.bar-grid{grid-template-columns:1fr}}
 .bev{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:30px 26px;display:flex;flex-direction:column}
 .bev h3{margin-bottom:4px}
 .bev .kind{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
@@ -437,7 +454,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ══════════ HERO ══════════ -->
 <header class="hero" id="top">
   <h1>Dupont Circle's most flexible <em>private event venue.</em></h1>
-  <p>Corporate receptions, presentations, private dinners and full buyouts — three distinct spaces or the entire building, up to 180 guests. Family-style menus from $40 a head, published bar packages, and an events team that replies within the hour.</p>
+  <p>Corporate receptions, presentations, private dinners and full buyouts — three distinct spaces or the entire building, up to 180 guests. Buffet menus from $50 a head, published bar packages, and one events contact from first email to last round.</p>
   <div class="hero-ctas">
     <a class="btn" href="#inquire">Plan Your Event</a>
     <a class="btn btn-ghost" href="#estimate">Estimate the Cost</a>
@@ -446,8 +463,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="stats">
     <div class="stat"><b>180</b><span>Guests, Full Buyout</span></div>
     <div class="stat"><b>3</b><span>Distinct Spaces</span></div>
-    <div class="stat"><b>$40</b><span>Menus Start At, PP</span></div>
-    <div class="stat"><b>1 hr</b><span>Typical Reply Time</span></div>
+    <div class="stat"><b>$50</b><span>Menus Start At, PP</span></div>
+    <div class="stat"><b>4</b><span>Bar Packages</span></div>
   </div>
 </header>
 
@@ -524,72 +541,129 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="menus" id="menus">
   <div class="wrap">
     <div class="eyebrow">Food Packages</div>
-    <h2>Four family-style menus. Published prices.</h2>
-    <p class="lede">Every menu is served family style — the table shares everything, so your guests get to taste it all. Available any day of the week, with salad options on request and assorted sodas included.</p>
+    <h2>Four buffet menus. Published prices.</h2>
+    <p class="lede">Every menu is a two-hour buffet for groups of 25 or more. Pick your starters and mains from the tier, and every tier includes everything in the one before it, plus more.</p>
 
     <div class="menu-grid">
       <div class="menu">
-        <h3>Augustus' Cena</h3>
-        <div class="price">$40 <small>/ person</small></div>
-        <div class="who">Receptions and casual gatherings where the food supports the room.</div>
+        <h3>Plebeian Cena</h3>
+        <div class="price">$50 <small>/ person</small></div>
+        <div class="who">Receptions and casual gatherings where the food supports the room. Arancini, truffle fries and pasta.</div>
         <ul class="counts">
-          <li><span>Antipasto</span><span>up to 3</span></li>
-          <li><span>Piatto unico</span><span>up to 3</span></li>
-          <li><span>Dolce</span><span>up to 2</span></li>
+          <li><span>Per cominciare</span><span>choose up to 2</span></li>
+          <li><span>Per finire</span><span>choose up to 2</span></li>
         </ul>
-        <div class="dessert">Dessert course <b>+$7</b> per person</div>
-        <a class="btn btn-ghost" href="#estimate" data-menu="40">Price It Out</a>
+        <details class="dishes"><summary>See the dishes</summary>
+          <b>Per cominciare</b><ul><li>Fried Brussels sprouts</li><li>Truffle fries</li><li>Sicilian arancini</li></ul>
+          <b>Per finire</b><ul><li>Tortellini alla vodka</li><li>Linguine al burro</li><li>Linguine al pomodoro</li></ul>
+        </details>
+        <div class="dessert">2-hour buffet · <b>25 guest</b> minimum</div>
+        <a class="btn btn-ghost" href="#estimate" data-menu="50">Price It Out</a>
       </div>
-
       <div class="menu">
-        <h3>Caesar's Cena</h3>
-        <div class="price">$55 <small>/ person</small></div>
-        <div class="who">A step up in the mains — lasagna and meatballs join the table.</div>
+        <h3>Gladiator Cena</h3>
+        <div class="price">$65 <small>/ person</small></div>
+        <div class="who">More choice on the table. Buffalo wings, walnut ravioli and chicken milanesa join the lineup.</div>
         <ul class="counts">
-          <li><span>Antipasto</span><span class="ph">up to 3</span></li>
-          <li><span>Piatto unico</span><span>up to 3</span></li>
-          <li><span>Dolce</span><span>up to 2</span></li>
+          <li><span>Per cominciare</span><span>choose up to 3</span></li>
+          <li><span>Per finire</span><span>choose up to 2</span></li>
         </ul>
-        <div class="dessert">Dessert course <b>+$5</b> per person</div>
-        <a class="btn btn-ghost" href="#estimate" data-menu="55">Price It Out</a>
+        <details class="dishes"><summary>See the dishes</summary>
+          <b>Per cominciare</b><ul><li>Fried Brussels sprouts</li><li>Truffle fries</li><li>Sicilian arancini</li><li>Buffalo wings</li></ul>
+          <b>Per finire</b><ul><li>Tortellini alla vodka</li><li>Linguine al burro</li><li>Linguine al pomodoro</li><li>Ravioli alle noci</li><li>Milanesa de pollo</li></ul>
+        </details>
+        <div class="dessert">2-hour buffet · <b>25 guest</b> minimum</div>
+        <a class="btn btn-ghost" href="#estimate" data-menu="65">Price It Out</a>
       </div>
-
       <div class="menu loved">
         <div class="menu-tag">Corporate Favorite</div>
-        <h3>Nero's Cena</h3>
-        <div class="price">$75 <small>/ person</small></div>
-        <div class="who">The balance most corporate groups land on. Calamari, burrata linguine, grilled shrimp salad.</div>
+        <h3>Senatorial Cena</h3>
+        <div class="price">$85 <small>/ person</small></div>
+        <div class="who">The balance most corporate groups land on. Steak empanadas, burrata linguine and lomo saltado.</div>
         <ul class="counts">
-          <li><span>Antipasto</span><span>up to 4</span></li>
-          <li><span>Piatto unico</span><span>up to 3</span></li>
-          <li><span>Dolce</span><span>up to 2</span></li>
+          <li><span>Per cominciare</span><span>choose up to 4</span></li>
+          <li><span>Per finire</span><span>choose up to 3</span></li>
         </ul>
-        <div class="dessert">Dessert course <b>+$3</b> per person</div>
-        <a class="btn" href="#estimate" data-menu="75">Price It Out</a>
+        <details class="dishes"><summary>See the dishes</summary>
+          <b>Per cominciare</b><ul><li>Fried Brussels sprouts</li><li>Truffle fries</li><li>Sicilian arancini</li><li>Buffalo wings</li><li>Steak empanadas</li></ul>
+          <b>Per finire</b><ul><li>Tortellini alla vodka</li><li>Linguine al burro</li><li>Linguine alla burrata</li><li>Ravioli alle noci</li><li>Milanesa de pollo</li><li>Lomo saltado</li></ul>
+        </details>
+        <div class="dessert">2-hour buffet · <b>25 guest</b> minimum</div>
+        <a class="btn" href="#estimate" data-menu="85">Price It Out</a>
       </div>
-
       <div class="menu">
-        <h3>Sabina's Cena</h3>
-        <div class="price">$110 <small>/ person</small></div>
-        <div class="who">The full table. Lobster ravioli, airline chicken, meats and cheeses, miniature desserts.</div>
+        <h3>Imperial Cena</h3>
+        <div class="price">$115 <small>/ person</small></div>
+        <div class="who">The full spread. Garlic shrimp and branzino alla fiorentina on top of everything else.</div>
         <ul class="counts">
-          <li><span>Antipasto</span><span>up to 5</span></li>
-          <li><span>Piatto unico</span><span>up to 4</span></li>
-          <li><span>Dolce</span><span>up to 2</span></li>
+          <li><span>Per cominciare</span><span>choose up to 4</span></li>
+          <li><span>Per finire</span><span>choose up to 4</span></li>
         </ul>
-        <div class="dessert">Dessert course <b>included</b></div>
-        <a class="btn btn-ghost" href="#estimate" data-menu="110">Price It Out</a>
+        <details class="dishes"><summary>See the dishes</summary>
+          <b>Per cominciare</b><ul><li>Fried Brussels sprouts</li><li>Truffle fries</li><li>Sicilian arancini</li><li>Buffalo wings</li><li>Steak empanadas</li><li>Garlic shrimp</li></ul>
+          <b>Per finire</b><ul><li>Tortellini alla vodka</li><li>Linguine al burro</li><li>Linguine alla burrata</li><li>Ravioli alle noci</li><li>Milanesa de pollo</li><li>Lomo saltado</li><li>Branzino alla fiorentina</li></ul>
+        </details>
+        <div class="dessert">2-hour buffet · <b>25 guest</b> minimum</div>
+        <a class="btn btn-ghost" href="#estimate" data-menu="115">Price It Out</a>
+      </div>
+    </div>
+
+    <div class="platters">
+      <div class="eyebrow" style="margin-bottom:10px">Food platters</div>
+      <h3>Prefer platters? Order by the tray.</h3>
+      <div class="plat-grid">
+        <div>
+          <b>Antipasti</b>
+          <ul>
+            <li><span>Assortment of cheeses</span><span>$115</span></li>
+            <li><span>Assortment of meats</span><span>$135</span></li>
+            <li><span>Meats &amp; cheeses</span><span>$150</span></li>
+          </ul>
+          <b>Da condividere</b>
+          <ul>
+            <li><span>Bruschetta</span><span>$100</span></li>
+            <li><span>Truffle fries</span><span>$90</span></li>
+            <li><span>Fried Brussels sprouts</span><span>$90</span></li>
+            <li><span>Garlic shrimp</span><span>$120</span></li>
+            <li><span>Steak empanadas <small>16 servings</small></span><span>$130</span></li>
+            <li><span>Mediterranean lamb sliders <small>16 servings</small></span><span>$130</span></li>
+          </ul>
+        </div>
+        <div>
+          <b>Primi</b>
+          <ul>
+            <li><span>Tortellini alla vodka</span><span>$140</span></li>
+            <li><span>Ravioli alle noci</span><span>$155</span></li>
+            <li><span>Linguine al burro</span><span>$110</span></li>
+            <li><span>Linguine alla burrata</span><span>$130</span></li>
+          </ul>
+          <p class="plat-add">Add to any pasta: chicken $50 · shrimp $75 · steak $90</p>
+          <b>Secondi</b>
+          <ul>
+            <li><span>Branzino alla fiorentina</span><span>$230</span></li>
+            <li><span>Lomo saltado</span><span>$225</span></li>
+            <li><span>Milanesa de pollo</span><span>$165</span></li>
+          </ul>
+        </div>
+        <div>
+          <b>Dolci</b>
+          <ul>
+            <li><span>Tiramisu <small>15 servings</small></span><span>$150</span></li>
+            <li><span>Crème brûlée cheesecake <small>15 servings</small></span><span>$150</span></li>
+          </ul>
+          <p class="plat-add">Platters pair with any buffet menu, or build the whole night from them.</p>
+        </div>
       </div>
     </div>
 
     <div class="menu-note">
       <div>
-        <b>Served family style</b>
-        The table shares every dish. Nobody picks one plate and wonders about the others.
+        <b>Served buffet style</b>
+        Two hours of service, so guests graze at their own pace and get to taste it all.
       </div>
       <div>
-        <b>Platters &amp; custom formats</b>
-        Prefer passed platters or a mixed format? Most menu items can be served that way, and some event-only dishes never appear on the regular menu. Ask and we'll build it.
+        <b>Mixed formats</b>
+        Want a buffet with a few platters on top, or a different format altogether? Tell us and we'll build it.
       </div>
       <div>
         <b>Dietary needs</b>
@@ -608,50 +682,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="bar-grid">
       <div class="bev">
-        <h3>The Plebian's</h3>
-        <div class="kind">Limited bar</div>
+        <h3>Plebeian</h3>
+        <div class="kind">Limited bar · Beer &amp; wine</div>
         <ul>
-          <li>2 premium red wines</li>
-          <li>2 white wines</li>
-          <li>1 rosé and prosecco</li>
-          <li>4 brew options</li>
+          <li>Red: Californian Zinfandel, Californian blend</li>
+          <li>White: Italian Pinot Grigio, Lebanese blend</li>
+          <li>Rosé: Lebanese blend</li>
+          <li>Prosecco and Stella Artois</li>
         </ul>
         <div class="hours">
-          <div><b>$35</b><span>2 Hours, PP</span></div>
-          <div><b>$47</b><span>3 Hours, PP</span></div>
+          <div><b>$45</b><span>2 Hours, PP</span></div>
+          <div><b>$60</b><span>3 Hours, PP</span></div>
         </div>
       </div>
-
       <div class="bev">
-        <h3>The Gladiator's</h3>
-        <div class="kind">Full bar · Call brands</div>
+        <h3>Gladiator</h3>
+        <div class="kind">Open bar · One cocktail</div>
         <ul>
+          <li>Everything in the Plebeian</li>
           <li>1 cocktail of your choice</li>
-          <li>Call-brand liquors including Tito's, Tanqueray, Bacardi, Maker's Mark and Bulleit</li>
-          <li>2 premium reds, 2 premium whites</li>
-          <li>1 rosé, prosecco, 4 brews</li>
+          <li>Skyy, Bombay Sapphire, Lunazul, Bacardi, Jim Beam</li>
         </ul>
         <div class="hours">
-          <div><b>$60</b><span>2 Hours, PP</span></div>
-          <div><b>$80</b><span>3 Hours, PP</span></div>
+          <div><b>$65</b><span>2 Hours, PP</span></div>
+          <div><b>$85</b><span>3 Hours, PP</span></div>
         </div>
       </div>
-
       <div class="bev">
-        <h3>The Emperor's</h3>
-        <div class="kind">Full bar · Premium</div>
+        <h3>Senatorial</h3>
+        <div class="kind">Open bar · Two cocktails</div>
         <ul>
+          <li>Everything in the Gladiator</li>
           <li>2 cocktails of your choice</li>
-          <li>Grey Goose, Hendrick's, Johnnie Walker Black, Espolón, Suntory and more</li>
-          <li>3 premium reds, 2 premium whites</li>
-          <li>Preset sparkling toast for every guest</li>
+          <li>Tito's, Espolon, Verde Amarás, Appleton Estate, Wild Turkey</li>
         </ul>
         <div class="hours">
           <div><b>$85</b><span>2 Hours, PP</span></div>
           <div><b>$110</b><span>3 Hours, PP</span></div>
         </div>
       </div>
+      <div class="bev">
+        <h3>Imperial</h3>
+        <div class="kind">Open bar · Three cocktails</div>
+        <ul>
+          <li>Everything in the Senatorial</li>
+          <li>3 cocktails of your choice</li>
+          <li>Grey Goose, Hendrick's, Casamigos, Diplomático, Maker's Mark</li>
+        </ul>
+        <div class="hours">
+          <div><b>$110</b><span>2 Hours, PP</span></div>
+          <div><b>$140</b><span>3 Hours, PP</span></div>
+        </div>
+      </div>
     </div>
+    <p class="bar-note">Each package includes everything offered in the packages before it.</p>
 
     <div class="bar-alt">
       <div>
@@ -685,22 +769,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="est-controls">
         <div class="est-field">
           <label for="est-guests">Guest count</label>
-          <input type="number" id="est-guests" value="40" min="10" max="180" step="5" />
+          <input type="number" id="est-guests" value="40" min="25" max="180" step="5" />
         </div>
 
         <div class="est-field">
           <label for="est-food">Food package</label>
           <select id="est-food">
-            <option value="40">Augustus' Cena — $40 pp</option>
-            <option value="55">Caesar's Cena — $55 pp</option>
-            <option value="75" selected>Nero's Cena — $75 pp</option>
-            <option value="110">Sabina's Cena — $110 pp</option>
+            <option value="50">Plebeian Cena — $50 pp</option>
+            <option value="65">Gladiator Cena — $65 pp</option>
+            <option value="85" selected>Senatorial Cena — $85 pp</option>
+            <option value="115">Imperial Cena — $115 pp</option>
             <option value="platters">Platters or à la carte</option>
             <option value="none">No food — bar only</option>
           </select>
         </div>
 
-        <div class="est-field" id="est-dessert-wrap">
+        <div class="est-field" id="est-dessert-wrap" style="display:none">
           <label class="chk" for="est-dessert">
             <input type="checkbox" id="est-dessert" />
             <span>Add the dessert course <span id="est-dessert-price">(+$3 pp)</span></span>
@@ -711,9 +795,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label for="est-bev">Beverage approach</label>
           <select id="est-bev">
             <option value="tab" selected>Host tab / on consumption</option>
-            <option value="35">The Plebian's — limited bar</option>
-            <option value="60">The Gladiator's — full bar, call brands</option>
-            <option value="85">The Emperor's — full bar, premium</option>
+            <option value="45">Plebeian — beer &amp; wine</option>
+            <option value="65">Gladiator — open bar, one cocktail</option>
+            <option value="85">Senatorial — open bar, two cocktails</option>
+            <option value="110">Imperial — open bar, three cocktails</option>
           </select>
         </div>
 
@@ -733,7 +818,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="eyebrow" style="margin-bottom:14px">Without a package</div>
           <h3 style="font-size:1.35rem;margin-bottom:14px">We'll work to a minimum spend.</h3>
           <p style="color:var(--muted-hi);font-size:.94rem">Plenty of events here run on individual tabs and whatever the kitchen sends out — no package at all. Those aren't priced per head. Instead we set a minimum spend based on four things: which room, which day, what time, and how many people.</p>
-          <p style="color:var(--muted-hi);font-size:.94rem;margin-top:12px">Tell us those four and we'll come back with the number, usually within the hour.</p>
+          <p style="color:var(--muted-hi);font-size:.94rem;margin-top:12px">Tell us those four and we'll come back with the number.</p>
         </div>
 
         <div id="est-figures">
@@ -775,7 +860,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div>
         <b>What you'll get back</b>
-        A reply within the hour confirming your date, then a written proposal the same day — the room, the menu, the bar approach and one final number.
+        A personal reply confirming your date, then a written proposal — the room, the menu, the bar approach and one final number.
       </div>
     </div>
   </div>
@@ -810,8 +895,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="bor-grid">
       <div class="bor-item">
         <div class="n">01</div>
-        <h3>A reply within the hour.</h3>
-        <p>Not two days. Inquiries that land during business hours get a real reply from a real person the same hour, with your date confirmed and any questions we need answered. The full priced proposal follows the same day.</p>
+        <h3>A real reply from a real person.</h3>
+        <p>Not an autoresponder. Every inquiry gets a personal reply from our events team, with your date confirmed and any questions we need answered, followed by a full priced proposal.</p>
       </div>
       <div class="bor-item">
         <div class="n">02</div>
@@ -840,8 +925,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="steps">
       <div class="step"><b>Step 01</b><h3>Send the details</h3><p>Date, headcount, and roughly what you're picturing. If you don't know the room yet, say so — we'll recommend one.</p></div>
-      <div class="step"><b>Step 02</b><h3>Hear back within the hour</h3><p>A real person, not an autoresponder, with availability and the questions that actually change your quote.</p></div>
-      <div class="step"><b>Step 03</b><h3>Get a customized quote</h3><p>Room, menu, bar approach and one all-in number, back with you the same day. We hold your date while you decide.</p></div>
+      <div class="step"><b>Step 02</b><h3>Hear back from a real person</h3><p>Not an autoresponder, but someone on our events team with availability and the questions that actually change your quote.</p></div>
+      <div class="step"><b>Step 03</b><h3>Get a customized quote</h3><p>Room, menu, bar approach and one all-in number, written up for your event. We hold your date while you decide.</p></div>
       <div class="step"><b>Step 04</b><h3>Lock the details</h3><p>Menu selections, layout, vendors, timing. Then you show up and we run it.</p></div>
     </div>
   </div>
@@ -898,7 +983,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="form-side">
       <div class="eyebrow">Get Custom Pricing</div>
       <h2>Tell us the date. We'll send the number.</h2>
-      <p class="lede">Two minutes to fill out, and a real reply within the hour during business hours.</p>
+      <p class="lede">Two minutes to fill out, and a real reply from our events team.</p>
       <ul>
         <li>A real reply, not an autoresponder</li>
         <li>Your date held while you decide</li>
@@ -1049,16 +1134,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <label for="food_package">Which banquet package?</label>
               <select id="food_package" name="food_package">
                 <option value="">Not sure</option>
-                <option>Augustus' Cena — $40 pp</option>
-                <option>Caesar's Cena — $55 pp</option>
-                <option>Nero's Cena — $75 pp</option>
-                <option>Sabina's Cena — $110 pp</option>
+                <option>Plebeian Cena — $50 pp</option>
+                <option>Gladiator Cena — $65 pp</option>
+                <option>Senatorial Cena — $85 pp</option>
+                <option>Imperial Cena — $115 pp</option>
               </select>
             </div>
             <div class="fld">
               <div class="chkgrid">
                 <label class="chkline"><input type="checkbox" name="salad" value="Yes" /><span>Add salad options</span></label>
-                <label class="chkline"><input type="checkbox" name="dessert" value="Yes" /><span>Add the dessert course</span></label>
+                <label class="chkline"><input type="checkbox" name="dessert" value="Yes" /><span>Add dessert platters</span></label>
               </div>
             </div>
             <div class="fld">
@@ -1084,9 +1169,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <label for="bev_package">Which beverage package?</label>
               <select id="bev_package" name="bev_package">
                 <option value="">Not sure</option>
-                <option>The Plebian's — limited bar</option>
-                <option>The Gladiator's — full bar, call brands</option>
-                <option>The Emperor's — full bar, premium</option>
+                <option>Plebeian — beer &amp; wine</option>
+                <option>Gladiator — open bar, one cocktail</option>
+                <option>Senatorial — open bar, two cocktails</option>
+                <option>Imperial — open bar, three cocktails</option>
               </select>
             </div>
             <div class="fld">
@@ -1212,9 +1298,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   /* ─────────── 1. Cost estimator ─────────── */
   var TAX = 0.10, FEE = 0.05, GRAT = 0.18;
-  var DESSERT = { 40:7, 55:5, 75:3, 110:0 };
-  var BEV = { 35:{2:35,3:47}, 60:{2:60,3:80}, 85:{2:85,3:110} };
-  var BEV_NAME = { 35:"The Plebian's", 60:"The Gladiator's", 85:"The Emperor's" };
+  var DESSERT = { 50:0, 65:0, 85:0, 115:0 };   /* dessert is now ordered as platters, not a per-head add-on */
+  var BEV = { 45:{2:45,3:60}, 65:{2:65,3:85}, 85:{2:85,3:110}, 110:{2:110,3:140} };
+  var BEV_NAME = { 45:"Plebeian", 65:"Gladiator", 85:"Senatorial", 110:"Imperial" };
 
   var $ = function (id) { return document.getElementById(id); };
   var guests = $('est-guests'), food = $('est-food'), dessert = $('est-dessert'),
@@ -1324,10 +1410,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   /* ─────────── 2. Carry the estimate into the form ─────────── */
-  var FOOD_LABEL = { 40:"Augustus' Cena — $40 pp", 55:"Caesar's Cena — $55 pp",
-                     75:"Nero's Cena — $75 pp", 110:"Sabina's Cena — $110 pp" };
-  var BEV_LABEL  = { 35:"The Plebian's — limited bar", 60:"The Gladiator's — full bar, call brands",
-                     85:"The Emperor's — full bar, premium" };
+  var FOOD_LABEL = { 50:"Plebeian Cena — $50 pp", 65:"Gladiator Cena — $65 pp",
+                     85:"Senatorial Cena — $85 pp", 115:"Imperial Cena — $115 pp" };
+  var BEV_LABEL  = { 45:"Plebeian — beer & wine", 65:"Gladiator — open bar, one cocktail",
+                     85:"Senatorial — open bar, two cocktails", 110:"Imperial — open bar, three cocktails" };
 
   function setSelect(el, text) {
     if (!el) return;
